@@ -75,7 +75,7 @@ class Database
     {
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($params);
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -85,7 +85,7 @@ class Database
     {
         $stmt = $this->connection->prepare($sql);
         $stmt->execute($params);
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result ?: null;
     }
 

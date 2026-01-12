@@ -116,7 +116,9 @@ try {
 }
 EOF
 
-cd /home/runner/work/Neos_Chronos_V3/Neos_Chronos_V3
+# Get current script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 php /tmp/test_autoload.php
 echo ""
 
