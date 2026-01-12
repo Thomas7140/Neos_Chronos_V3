@@ -1,0 +1,23 @@
+{
+    "name": "thomas7140/neos-chronos-v3",
+    "description": "BAB.Stats Chronos - Modern PHP 8 statistics system for Black Hawk Down",
+    "type": "project",
+    "keywords": ["statistics", "bhd", "black-hawk-down", "game-stats"],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chronos\\": "src/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.0"
+        }
+    }
+}

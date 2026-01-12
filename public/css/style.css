@@ -1,0 +1,230 @@
+/* Chronos V3 - Classic BAB.Stats Style */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+    background-color: #000000;
+    color: #CCCCCC;
+    padding: 10px;
+}
+
+a {
+    color: #FFCC00;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    padding: 15px;
+}
+
+h1, h2, h3 {
+    color: #FFCC00;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #2a2a2a;
+    border-left: 3px solid #FFCC00;
+}
+
+h1 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+h3 {
+    font-size: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    background-color: #0a0a0a;
+}
+
+table th {
+    background-color: #2a2a2a;
+    color: #FFCC00;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #333333;
+    font-weight: bold;
+}
+
+table td {
+    padding: 6px 8px;
+    border: 1px solid #1a1a1a;
+    background-color: #0f0f0f;
+}
+
+table tr:hover td {
+    background-color: #1a1a1a;
+}
+
+table tr.even td {
+    background-color: #0a0a0a;
+}
+
+.rank {
+    font-weight: bold;
+    color: #FFCC00;
+    width: 40px;
+    text-align: center;
+}
+
+.player-name {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.stat-value {
+    text-align: right;
+    color: #CCCCCC;
+}
+
+.stat-positive {
+    color: #00FF00;
+}
+
+.stat-negative {
+    color: #FF6666;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+    border: 1px solid #FFCC00;
+}
+
+.header h1 {
+    color: #FFCC00;
+    font-size: 24px;
+    margin: 0;
+    padding: 10px;
+    background: none;
+    border: none;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.header .subtitle {
+    color: #999999;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.nav {
+    background-color: #2a2a2a;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #333333;
+    text-align: center;
+}
+
+.nav a {
+    margin: 0 15px;
+    padding: 5px 10px;
+    color: #FFCC00;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nav a:hover {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+.footer {
+    margin-top: 30px;
+    padding: 15px;
+    text-align: center;
+    color: #666666;
+    font-size: 10px;
+    border-top: 1px solid #333333;
+}
+
+.info-box {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.pagination {
+    text-align: center;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #333333;
+    display: inline-block;
+}
+
+.pagination a:hover {
+    background-color: #333333;
+}
+
+.pagination .current {
+    background-color: #FFCC00;
+    color: #000000;
+    font-weight: bold;
+}
+
+.search-box {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+}
+
+.search-box input[type="text"] {
+    padding: 5px 10px;
+    background-color: #0a0a0a;
+    border: 1px solid #333333;
+    color: #CCCCCC;
+    width: 300px;
+}
+
+.search-box input[type="submit"] {
+    padding: 5px 15px;
+    background-color: #2a2a2a;
+    border: 1px solid #FFCC00;
+    color: #FFCC00;
+    cursor: pointer;
+}
+
+.search-box input[type="submit"]:hover {
+    background-color: #333333;
+    color: #FFFFFF;
+}
+
+.no-data {
+    text-align: center;
+    padding: 30px;
+    color: #666666;
+    font-style: italic;
+}
