@@ -1,0 +1,29 @@
+Redistribution and use of this software with or without modification is permitted provided that the following conditions are met:
+
+1) You are allowed to redistribute this program only if this document (licence.txt) is included in the package.
+
+2) This program is provided free of charge. If redistributing it, you are not allowed to make any money from it unless otherwise agreed with the author.
+
+3) If you use any part of this program in an application of your own, you must clearly state which parts have been taken from BAB.stats. This can be done either in the source code (if you propose to distribute your source code) or in the documentation (if source code is not available). Also, this document (licence.txt) must be included in the package. If you don't intend to distribute your own program which contains code from BABstats, then you are only obliged to credit to the author of BAB.stats.
+
+4) You are allowed to change BAB.stats Server in whatever way you wish. If you use any part of BAB.stats Server in your own application though, there must be a link to the current BAB.stats website (http://www.babstats.com/) placed on related Web pages. If you use BAB.stats Uploader with your own server-side application, the above mentioned link must also appear. The link can be named either "Powered by BAB.stats" or just "BAB.stats" - either is acceptable. But it must be visible on every page. If you use frames, it must be then on at least one of the frame pages and clearly visible to visitors.
+
+5) You can place your own copyright on the BAB.stats Server pages on condition that you understand that such copyright only protects your own templates and not BABstats Server side scripts or any part of the original program. BAB.stats Server side scripts in their original format remain the property of the author. 
+
+6) When using templates or modules you should check the licence that comes with them. This BAB.stats licence does not cover BAB.stats Server templates and modules.
+
+7) Decompiling or otherwise reverse-engeneering BAB.stats Uploader executable is strictly forbidden as is using any other means to modify it.
+
+
+
+
+WARRANTY
+
+Since this program is provided "as is" and free of charge, no warranty either implied or expressed is applicable. The author takes no responsibility for any damage to your equipment or any loss of data however so caused. You expressly acknowledge and agree that use of the BABstats or any of its components is at your sole risk. Under no circumstances shall the author be liable for any incidental, direct or consequential damages arising out of this Licence. 
+
+COMPLETE AGREEMENT
+This licence constitutes the entire agreement between the parties with respect to the use of BABstats and/or any of it's components and supercedes all prior or contemporaneous understandings regarding the subject matter. No amendment to or modification of the License will be binding unless in writing and signed by the Author. 
+
+Author of Original Scritps: Tomas Stucinkas, Copyright © 2003 - 2004.
+
+Modifier of Original scritps and Author of New Scripts: Peter Jones, Copyright © 2005 - 2009.

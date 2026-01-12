@@ -1,0 +1,359 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset={charset}">
+    <meta name="Author" content="Tomas Stucinskas a.k.a Baboon">
+    <title>{website_title} - Powered by BAB.stats Chronos</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <style type="text/css">
+      .pagetitle {
+        font-weight: bold;
+        font-size: 20px;
+        font-family: Tahoma, Verdana, Arial;
+        color: #DDDDDD;
+      }
+
+      .header {
+        background-color: #996633;
+        font-weight: bold;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        color: #DDDDDD;
+      }
+
+      .text {
+        font-weight: normal;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        color: #CCCCCC;
+      }
+
+      .multipage {
+        font-weight: normal;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        color: #BBBBBB;
+      }
+
+      .main {
+        background-color: #606060;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        text-align: justify;
+        color: #CCCCCC;
+      }
+
+      .tablerow1 {
+        background-color: #404040;
+        font-weight: normal;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        text-align: left;
+        color: #EEEEEE;
+      }
+
+      .tablerow2 {
+        background-color: #303030;
+        font-weight: normal;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        text-align: left;
+        color: #EEEEEE;
+      }
+
+      .tablerow3 {
+        border-left: thin solid #555555;
+        text-align: right;
+      }
+
+      .tablerow4 {
+        border-left: thin solid #555555;
+        text-align: left;
+      }
+
+      .tableheader,
+      .selectedasc,
+      .selecteddesc,
+      .unselected {
+        background-color: #505050;
+        font-weight: bold;
+        font-size: 10px;
+        font-family: Tahoma, Verdana, Arial;
+        text-align: left;
+        color: #EEEEEE;
+      }
+
+      .title {
+        font-weight: bold;
+        font-size: 12px;
+        font-family: Tahoma, Verdana, Arial;
+        text-align: center;
+        color: #EEEEEE;
+      }
+
+      .navigation {
+        background-color: #303030;
+        font-weight: bold;
+        font-size: 10px;
+        font-family: Tahoma, Verdana, Arial;
+        color: #DDDDDD;
+      }
+
+      .playermedals {
+        font-weight: normal;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        text-align: center;
+        color: #CCCCCC;
+      }
+
+      .blue { color: #1796CB; }
+      .red { color: #E3553C; }
+      .orange { color: #FF6600; }
+      .orange2 { color: #FFD200; }
+      .yellow { color: yellow; }
+      .violet { color: violet; }
+      .green { color: #44DD44; }
+      .none { color: #44DD44; }
+
+      body {
+        background-color: #2C3539;
+      }
+
+      .navigation a:link { color: #EEAA50; text-decoration: none; }
+      .navigation a:visited { color: #EEAA50; text-decoration: none; }
+      .navigation a:hover { color: #FFBB60; text-decoration: underline; }
+
+      .tableheader a:link { color: #EEAA50; text-decoration: none; }
+      .tableheader a:visited { color: #EEAA50; text-decoration: none; }
+      .tableheader a:hover { color: #FFBB60; text-decoration: underline; }
+
+      .header a:link { color: #EEAA50; text-decoration: none; }
+      .header a:visited { color: #EEAA50; text-decoration: none; }
+      .header a:hover { color: #FFBB60; text-decoration: underline; }
+
+      .main a:link { color: #EEAA50; text-decoration: none; }
+      .main a:visited { color: #EEAA50; text-decoration: none; }
+      .main a:hover { color: #FFBB60; text-decoration: underline; }
+
+      input, option, textarea, select {
+        color: silver;
+        background-color: #404040;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        border: 1px solid Silver;
+      }
+
+      hr {
+        color: #000000;
+        height: 1;
+      }
+
+      /* ---------- TOP NAV (NEW) ---------- */
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: #1f1f1f;
+        border-bottom: 2px solid #666666;
+        z-index: 1000;
+        box-sizing: border-box;
+      }
+
+      .nav-inner {
+        width: 98%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 0;
+        box-sizing: border-box;
+      }
+
+      .logo a {
+        font-size: 26px;
+        font-weight: bold;
+        color: #DDDDDD;
+        text-decoration: none;
+        font-family: Tahoma, Verdana, Arial;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+      }
+
+      .nav-button {
+        display: inline-block;
+        background-color: #996633;
+        color: #ffffff;
+        padding: 8px 14px;
+        text-decoration: none;
+        border: 1px solid #775533;
+        border-radius: 3px;
+        font-weight: bold;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        white-space: nowrap;
+      }
+
+      .nav-button:hover {
+        background-color: #aa7744;
+        border-color: #886644;
+      }
+
+      .nav-search form {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        margin: 0;
+      }
+
+      .nav-search input[type="text"] {
+        color: silver;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        border: 1px solid #666666;
+        background-color: #303030;
+        padding: 7px 10px;
+        width: 190px;
+      }
+
+      .nav-search input[type="submit"] {
+        color: #ffffff;
+        font-size: 11px;
+        font-family: Tahoma, Verdana, Arial;
+        border: 1px solid #775533;
+        background-color: #996633;
+        padding: 7px 14px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      /* Optional: add space so content doesn't sit under fixed header */
+      .page-wrap {
+        padding-top: 110px;
+      }
+
+      /* ---------- NAV CARD ---------- */
+      .nav-card {
+        background-color: #1f1f1f;
+        border: 1px solid #666666;
+        border-radius: 4px;
+        padding: 20px;
+        width: 98%;
+        margin: 10px auto;
+        box-sizing: border-box;
+      }
+
+    </style>
+  </head>
+
+  <script type="text/javascript" language="JavaScript">
+    function resubmit(pID) {
+      myString = new String(window.location);
+      if (myString.search("&pid") == -1) {
+        window.location = window.location + "&pid=" + pID + "#" + pID;
+      } else {
+        splitString = myString.split("&pid");
+        splitString2 = myString.split("&pid=");
+        splitString3 = splitString2[1].split("#");
+        if (splitString3[0] == pID) {
+          vID = 0;
+        } else {
+          vID = pID;
+        }
+        window.location = splitString[0] + "&pid=" + vID + "#" + pID;
+      }
+    }
+  </script>
+
+  <body style="background-color: #2C3539;">
+
+    <!-- 100% WIDE TOP NAV (MOVED OUTSIDE TABLES) -->
+    <header class="site-header">
+      <div class="nav-inner">
+        <div class="logo">
+          <a href="{mainscript}action=start">Devilish Services Stats</a>
+        </div>
+
+        <div class="nav-links">
+          <a href="{mainscript}action=kill_stats" class="nav-button">Kill/Death Stats</a>
+          <a href="{mainscript}action=game_stats" class="nav-button">Game Stats</a>
+          <a href="{mainscript}action=goal_stats" class="nav-button">Goal Stats</a>
+          <a href="{mainscript}action=weapon_stats" class="nav-button">Weapon Stats</a>
+          <a href="{mainscript}action=squad_stats" class="nav-button">Squad Stats</a>
+          <a href="{mainscript}action=map_stats" class="nav-button">Map Stats</a>
+          <a href="{mainscript}action=compare_stats" class="nav-button">Compare Stats</a>
+          <a href="monthlystats/" class="nav-button">Monthly Stats</a>
+          <a href="{mainscript}action=month_awards" class="nav-button">Monthly Awards</a>
+        </div>
+
+        <div class="nav-search">
+          <form method="post" action="{mainscript}action=search">
+            <input type="text" name="playername" maxlength="40" placeholder="Search Player">
+            <input type="submit" name="submit" value="Search">
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-wrap">
+      <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td width="100%">
+
+            <div align="center">
+              <center>
+
+                <!-- Main Content -->
+                <table width="100%" border="0" cellspacing="0" cellpadding="4" style="border-collapse: collapse">
+                  <tr class="main">
+                    <td valign="top" align="center" style="background-color: #2C3539;">
+                      <br>
+                      {content}
+                      <br>
+                    </td>
+                  </tr>
+                </table>
+
+              </center>
+            </div>
+
+            <div align="center">
+              <center>
+
+                <!-- Navigation Card -->
+                <div class="nav-card">
+                  <div style="text-align: center;">
+                    <a href="admin.php" class="nav-button">Admin</a>
+                    <a href="{mainscript}action=servers" class="nav-button">Servers</a>
+                    <a href="{mainscript}action=ranks" class="nav-button">Ranks</a>
+                    <a href="{mainscript}action=awards" class="nav-button">Awards</a>
+                    <a href="{mainscript}action=faq" class="nav-button">FAQ</a>
+                  </div>
+                </div>
+
+              </center>
+            </div>
+
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="visibility:hidden; font-size:xx-small;">templates/main.htm 1.0.0</div>
+  </body>
+</html>
+
+
+
+
+

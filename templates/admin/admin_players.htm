@@ -1,0 +1,375 @@
+<!-- TEMPLATE  : 'ADMIN/PLAYERS'                    -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél     -->
+<!-- EMAIL     : azrael@tdosquad.co.uk              -->
+<!-- FINALIZED : 1st May 2005                       -->
+
+
+<!-- MAIN BLOCK -->
+<block name="list_select">
+<p class="title">Players Admin</p>
+
+  <form action="{adminaction}&id={id}" method="post">
+    <table>
+      <tr>
+        <td width="130"><div align="center">
+          <select name="player_list" size="15" id="player_list">
+		    <option value="{id}" selected>{name}</option>
+			<loop name="players">
+            <option value="{players.id}">{players.name}</option>>
+            </loop name="players">
+                              </select>          
+          <br>
+		  <input name="select_player" type="submit" id="select_player" value="Select Player">
+		  <br>
+        </div></td>
+        <td width="180" valign="top"><div align="center">
+          <table width="100%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Player Details</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Name:</td>
+              <td class="tablerow1">{name}</td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Squad:</td>
+              <td class="tablerow1">{squad}</td>
+            </tr>
+			<loop name="aliases">
+            <tr>
+              <td class="tablerow2"><input type="checkbox" name="checkbox[]" value="{aliases.id}">Alias:</td>
+			  <td class="tablerow1">{aliases.name}</td>
+            </tr>
+			</loop name="aliases">
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Databse Stats </div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Stats:</td>
+              <td class="tablerow1">{stats}</td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Weapon stats:</td>
+              <td class="tablerow1">{wpnstats}</td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Map stats:</td>
+              <td class="tablerow1">{mapstats}</td>
+            </tr>
+          </table>
+		  <br>
+		  <br>
+		  <table width="100%" class="tableheader">
+            <tr>
+              <td><div align="center"><a href="{mainscript}action=admin_players_search">Advanced Search</a> </div></td>
+            </tr>
+          </table>
+          </div></td>
+        <td width="130" valign="top"><div align="center">
+          <table width="100%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Options</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><input type="submit" name="reset_plyr_stats" value="Reset All Stats" style="padding-left:5px; text-align:left; width:115px"></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><input type="submit" name="delete_aliases" value="Delete Alias(s)" style="padding-left:5px; text-align:left; width:115px"></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><input type="submit" name="unassign_squad" value="Unnasign Squad" style="padding-left:5px; text-align:left; width:115px"></td>
+            </tr>
+			<tr>
+              <td class="tablerow2"></td>
+            </tr>
+			<tr>
+              <td class="tablerow1">
+			    <div align="center">
+			      <select name="squad_list" id="squad_list">
+			        <loop name="squads">
+                    <option value="{squads.id}">{squads.name}</option>
+			        </loop name="squads">
+                  </select>
+			      <input name="set_plyr_squad" type="submit" id="set_plyr_squad" value="Set Squad">
+		        </div></td>
+            </tr>
+          </table>
+		  <br>
+		  <br>
+		  <table width="100%" class="tableheader">
+  <tr>
+    <td><div align="center"><a href="{mainscript}action=admin_player_options&id={id}">More player options</a></div></td>
+  </tr>
+</table>
+
+        </div></td>
+      </tr>
+    </table>
+  </form>  
+</block name="list_select">
+
+
+<!-- MORE PLAYER OPTIONS BLOCK -->
+<block name="more_player_options">
+<p class="title">Players Admin</p>
+
+<form method="post" action="{adminaction}&id={id}">
+  <table>
+    <tr>
+      <td width="180" valign="top"><div align="center">
+          <table width="100%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Player Details</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Name:</td>
+              <td class="tablerow1">{name}</td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Squad:</td>
+              <td class="tablerow1">{squad}</td>
+            </tr>
+            <loop name="aliases">
+            <tr>
+              <td class="tablerow2"><input type="checkbox" name="checkbox[]" value="{aliases.id}">
+                Alias:</td>
+              <td class="tablerow1">{aliases.name}</td>
+            </tr>
+            </loop name="aliases">
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Databse Stats </div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Stats:</td>
+              <td class="tablerow1">{stats}</td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Weapon stats:</td>
+              <td class="tablerow1">{wpnstats}</td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Map stats:</td>
+              <td class="tablerow1">{mapstats}</td>
+            </tr>
+          </table>
+          <br>
+          <table width="100%" class="tableheader">
+            <tr>
+              <td><div align="center">Name</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2"><div align="center">
+                  <input name="new_name" type="text" id="new_name">
+              </div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2"><div align="center">
+                  <input name="change_ply_name" type="submit" id="change_ply_name" value="Change Name">
+              </div></td>
+            </tr>
+          </table>
+          <br>
+          <table width="100%" class="tableheader">
+            <tr>
+              <td><div align="center"><a href="{mainscript}action=admin_players&id={id}">Back to player list </a> </div></td>
+            </tr>
+          </table>
+      </div></td>
+      <td width="130" valign="top"><div align="center">
+          <table width="100%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Options</div></td>
+            </tr>
+            <tr class="tablerow2">
+              <td></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input type="submit" name="reset_plyr_stats" value="Reset All Stats" style="padding-left:5px; text-align:left; width:115px">
+              </div></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input type="submit" name="delete_aliases" value="Delete Alias(s)" style="padding-left:5px; text-align:left; width:115px">
+              </div></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input type="submit" name="unassign_squad" value="Unnasign Squad" style="padding-left:5px; text-align:left; width:115px">
+              </div></td>
+            </tr>
+          </table>
+          <br>
+          <br>
+		  <br>
+          <table width="100%" class="tableheader">
+            <tr>
+              <td><div align="center">Alias</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2"><div align="center">
+                <input name="new_alias" type="text" id="new_alias">
+              </div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2"><div align="center">
+                <input name="set_plyr_alias" type="submit" id="set_plyr_alias" value="Set Alias">
+              </div></td>
+            </tr>
+          </table>
+      </div></td>
+      <td width="130" valign="top"><div align="center">
+          <table width="100%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Options</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input name="delete_player" type="submit" id="delete_player" style="padding-left:5px; text-align:left; width:115px" value="Delete Player">
+              </div></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input type="submit" name="reset_plyrgame_stats" value="Reset Game Stats" style="padding-left:5px; text-align:left; width:115px">
+              </div></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input type="submit" name="reset_plyrwpn_stats" value="Reset Weapon Stats" style="padding-left:5px; text-align:left; width:115px">
+              </div></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+			<tr class="tablerow2">
+              <td></td>
+            </tr>
+            <tr>
+              <td class="tablerow1"><div align="center">
+                <input type="submit" name="reset_plyrmap_stats" value="Reset Map Stats" style="padding-left:5px; text-align:left; width:115px">
+              </div></td>
+            </tr>
+          </table>
+          <br>
+          <br>
+          <table width="100%" class="tableheader">
+            <tr>
+              <td><div align="center">Squad</div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2"><div align="center">
+                <select name="squad_list" id="squad_list">
+				  <loop name="squads">
+                  <option value="{squads.id}">{squads.name}</option>
+				  </loop name="squads">
+                </select>
+              </div></td>
+            </tr>
+            <tr>
+              <td class="tablerow2"><div align="center">
+                <input name="set_plyr_squad" type="submit" id="set_plyr_squad" value="Set Squad">
+              </div></td>
+            </tr>
+          </table>
+      </div></td>
+    </tr>
+  </table>
+</form>
+</block name="more_player_options">
+
+
+<!-- ADVANCED SEARCH BLOCK -->
+<block name="advanced_search">
+<p class="title">Players Admin</p>
+
+<form method="post" action="{adminaction}&id={id}">
+<table>
+  <tr>
+    <td width="130"><div align="center">
+        <select name="search_list" size="15" id="search_list">
+          <loop name="players">
+          <option value="{players.id}">{players.name}</option>
+          </loop name="players">
+        </select>
+        <br>
+        <input name="select_search" type="submit" id="select_search" value="Select Player">
+        <br>
+    </div></td>
+    <td width="50" valign="top"><div align="center">
+        <br>
+        <br>
+        </div></td>
+    <td valign="top"><div align="center">
+        <table width="100%" >
+          <tr>
+            <td colspan="3" class="tableheader"><div align="center">Search Options</div></td>
+          </tr>
+          <tr>
+            <td class="tablerow2">Name:</td>
+            <td class="tablerow1"><input name="playername" type="text" id="playername" size="23"></td>
+          </tr>
+          <tr>
+            <td class="tablerow2">Squad:</td>
+            <td class="tablerow1">
+			  <select name="squadid" id="squadid">
+			    <option value="Ignore" selected>Ignore</option>
+				<loop name="squads">
+                <option value="{squads.id}">{squads.name}</option>
+				</loop name="squads">
+              </select></td>
+          </tr>
+          <tr>
+            <td class="tablerow2">Time Played:</td>
+            <td class="tablerow1">{time_select}</td>
+          </tr>
+          <tr>
+            <td class="tablerow2">Kills:</td>
+            <td class="tablerow1">{kill_select}</td>
+          </tr>
+          <tr>
+            <td class="tableheader" colspan="2"><div align="center">
+              <input name="search_player" type="submit" id="search_player" value="Search">
+            </div></td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table width="100%" class="tableheader">
+          <tr>
+            <td><div align="center"><a href="{mainscript}action=admin_players">Back to player list </a></div></td>
+          </tr>
+        </table>
+    </div></td>
+  </tr>
+</table>
+</form>
+</block name="advanced_search">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_players.htm 1.0.0</div>

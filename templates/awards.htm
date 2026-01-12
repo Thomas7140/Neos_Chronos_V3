@@ -1,0 +1,34 @@
+<!-- TEMPLATE     : 'AWARDS'                        -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 2nd May 2005                    -->
+
+
+<p class="title">BAB.stats Award System</p>
+
+<br>
+<b><a href="{mainscript}action=awards">Game Awards</a> :: <a href="{mainscript}action=wpn_awards">Weapon Awards</a></b>
+<br>
+</br>
+
+
+<table>
+  <tr class="tableheader">
+    <td width="15">&nbsp;</td>
+    <td width="90"><div align="center">Image</div></td>
+    <td width="300">&nbsp;Name</td>
+    <td width="300">&nbsp;Description</td>
+  </tr>
+  <loop name="awards">
+    <tr class="{awards.class}" height="60">
+      <td><div align="right">{awards.num}</div></td>
+      <td align="center"><div align="center"><img src="{base}{awards.image}" border="0" alt="{awards.description}"></div></td>
+      <td>&nbsp;{awards.name}</td>
+      <td>&nbsp;{awards.description}</td>
+     </tr>
+  </loop name="awards">
+</table>
+<div style="visibility:hidden; font-size:xx-small;">templates/awards.htm 1.0.0</div>

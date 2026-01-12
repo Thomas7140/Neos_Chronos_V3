@@ -1,0 +1,76 @@
+<!-- TEMPLATE     : 'Ranks'                         -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 11th June 2005                  -->
+
+
+<p class="title">BAB.stats Ranking System</p>
+<table border="0" cellspacing="0" cellpadding="10" width="100%">
+  <tr>
+    <td valign="top" align="center">
+      <p class="title">Rank List</p>
+      <table border="0" cellspacing="0" cellpadding="3">
+        <tr class="tableheader">
+          <td width="15">&nbsp;</td>
+          <td width="40">Image</td>
+          <td width="100">Rank</td>
+          <td width="50">Rating</td>
+        </tr>
+        <loop name="ranks">
+          <tr class="{ranks.class}">
+            <td>{ranks.num}</td>
+            <td><img src="{base}{ranks.thumbnail}" border="0"></td>
+            <td>{ranks.name}</td>
+            <td>{ranks.rating}</td>
+          </tr>
+        </loop name="ranks">
+      </table>    </td>
+    <td valign="top" align="center">
+      <p class="title">Rating Points for Player Stats</p>
+      <table border="0" cellspacing="0" cellpadding="3">
+        <tr class="tableheader"><td width="100">Stats Type</td><td width="50">Points</td></tr>
+        <tr class="tablerow1"><td>Kill</td><td>{points_kills}</td></tr>
+        <tr class="tablerow2"><td>Death</td><td>{points_deaths}</td></tr>
+        <tr class="tablerow1"><td>Headshot Bonus</td><td>{points_headshots}</td></tr>
+        <tr class="tablerow2"><td>Knifing Bonus</td><td>{points_knifings}</td></tr>
+        <tr class="tablerow1"><td>Double Kill Bonus</td><td>{points_doublekills}</td></tr>
+        <tr class="tablerow2"><td>Suicide Penalty</td><td>{points_suicides}</td></tr>
+        <tr class="tablerow1"><td>Murder Penalty</td><td>{points_murders}</td></tr>
+        <tr class="tablerow2"><td>Medic Save</td><td>{points_medic_saves}</td></tr>
+        <tr class="tablerow1"><td>Revived by Medic</td><td>{points_revives}</td></tr>
+        <tr class="tablerow2"><td>Minute in the Zone</td><td>{points_zone}</td></tr>
+        <tr class="tablerow1"><td>Zone Attack Kill Bonus</td><td>{points_zoneattack}</td></tr>
+        <tr class="tablerow2"><td>Zone Defend Kill Bonus</td><td>{points_zonedefend}</td></tr>
+        <tr class="tablerow1"><td>SD/AD Attack Kill Bonus</td><td>{points_sdadattack}</td></tr>
+        <tr class="tablerow2"><td>SD/AD Defend Kill Bonus</td><td>{points_sdaddefend}</td></tr>
+        <tr class="tablerow1"><td>Flag Capture</td><td>{points_flags}</td></tr>
+        <tr class="tablerow2"><td>Flag Save</td><td>{points_saves}</td></tr>
+        <tr class="tablerow1"><td>Flag Carrier Kill</td><td>{points_runnerkills}</td></tr>
+        <tr class="tablerow2"><td>Target Destroyed</td><td>{points_targets}</td></tr>
+        <tr class="tablerow1"><td>PSP Attempt</td><td>{points_pspattempts}</td></tr>
+        <tr class="tablerow2"><td>PSP Takeover</td><td>{points_psptakeovers}</td></tr>
+        <tr class="tablerow1"><td>Team Game Won</td><td>{points_wins}</td></tr>
+      </table>
+    </td>
+    <td valign="top" align="center">
+		<p class="title">Bonus Points for Weapon Kills</p>
+      <table border="0" cellspacing="0" cellpadding="3">
+        <tr class="tableheader">
+          <td width="100">Weapon</td>
+          <td width="50">Points</td>
+        </tr>
+        <loop name="weapon_points">
+          <tr class="{weapon_points.class}">
+            <td>{weapon_points.weapon}</td>
+            <td>{weapon_points.points}</td>
+          </tr>
+        </loop name="weapon_points">
+      </table> 
+	</td>
+  </tr>
+</table>
+
+<div style="visibility:hidden; font-size:xx-small;">templates/ranks.htm 1.0.0</div>

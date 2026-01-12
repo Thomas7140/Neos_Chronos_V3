@@ -1,0 +1,112 @@
+<!-- TEMPLATE  : 'ADMIN/MISC'                       -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél     -->
+<!-- EMAIL     : azrael@tdosquad.co.uk              -->
+<!-- FINALIZED : 1st May 2005                       -->
+
+
+<!-- MAIN BLOCK -->
+<block name="main">
+<p class="title">Misc Admin</p>
+
+<form action="{adminaction}" method="post">
+  <table class="tableheader">
+    <tr>
+      <td>{act}</td>
+    </tr>
+  </table>
+  <br>
+  <table>
+    <tr>
+      <td width="200" valign="top"><table width="100%" >
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center">Prune Database </div></td>
+        </tr>
+        <tr>
+          <td class="tablerow2">Not played for over: </td>
+          <td class="tablerow1"><input name="days" type="text" id="days" value="30" size="5" style="text-align:right"> 
+            days</td>
+        </tr>
+        <tr>
+          <td class="tablerow2">With less than: </td>
+          <td class="tablerow1"><input name="kills" type="text" id="kills" value="999999" size="5" style="text-align:right"> 
+            kills </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center">
+            <input name="prune" type="submit" id="prune" value="Prune">
+          </div></td>
+        </tr>
+      </table>
+	  <br />
+	  <table width="100%" >
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center">Monthly Stats still to reset  </div></td>
+        </tr>
+        <loop name="months">
+		<tr>
+          <td class="tablerow2">{months.fMonth}</td>
+          <td class="tablerow1" align="center">
+		  	<input name="radiobutton" type="radio" value="{months.month}" />
+		  </td>
+        </tr>
+		</loop name="months">
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center"><span class="tablerow1">
+            <input name="reset_monthly" type="submit" id="reset_monthly" value="Reset" style="padding-left:5px; text-align:left; width:60px" />
+          </span></div></td>
+        </tr>
+      </table>
+	  </td>
+      <td valign="top"><table width="100%" >
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center">Merge Players </div></td>
+        </tr>
+        <tr>
+          <td class="tablerow2">Player to keep:</td>
+          <td class="tablerow1"><input name="player1" type="text" id="player1" size="25" maxlength="50"></td>
+        </tr>
+        <tr>
+          <td class="tablerow2">Player to merge:</td>
+          <td class="tablerow1"><input name="player2" type="text" id="player2" size="25" maxlength="50"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center">
+            <input type="submit" name="merge" value="Merge">
+          </div></td>
+        </tr>
+      </table></td>
+      <td valign="top"><table width="100%" >
+        <tr>
+          <td colspan="2" class="tableheader"><div align="center">Other Options </div></td>
+        </tr>
+        <tr>
+          <td class="tablerow2">Reset Players/stats:</td>
+          <td class="tablerow1"><input name="reset" type="submit" id="reset" value="Reset" style="padding-left:5px; text-align:left; width:60px"></td>
+        </tr>
+        <tr>
+          <td class="tablerow2">Reset Chronos:</td>
+          <td class="tablerow1"><input name="reset_all" type="submit" id="reset_all" value="Reset All" style="padding-left:5px; text-align:left; width:60px"></td>
+        </tr>
+        <tr class="tableheader">
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="tablerow2">Repair Database </td>
+          <td class="tablerow1"><input name="repair" type="submit" id="repair" value="Repair" style="padding-left:5px; text-align:left; width:60px"></td>
+        </tr>
+		<tr class="tableheader">
+          <td colspan="2"></td>
+        </tr>
+		<tr>
+          <td class="tablerow2">Backup Database </td>
+          <td class="tablerow1"><input name="backup_db" type="submit" id="backup_db" value="Backup" style="padding-left:5px; text-align:left; width:60px"></td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+      </table></td>
+    </tr>
+  </table>
+</form>  
+</block name="main">
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_misc.htm 1.0.0</div>

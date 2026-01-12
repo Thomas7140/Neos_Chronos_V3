@@ -1,0 +1,43 @@
+<!-- TEMPLATE     : 'MONTH AWARDS'                  -->
+<!-- AUTHOR       : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 11th May 2005                   -->
+ 
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">&nbsp;</p>
+    
+  <form method="post" action="{mainscript}action=month_awards">
+    Month:&nbsp;
+    <select name="month">
+      <loop name="months">
+        <option value="{months.id}" {servers.selected}>{months.year_gained}</option>
+      </loop name="months">
+    </select>
+	&nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+  <table width="500">
+    <tr>
+      <td colspan="3" class="tableheader"><div align="center">Awards for {date} </div></td>
+    </tr>
+    <tr class="tableheader">
+      <td width="220"><div align="left">Award</div></td>
+      <td colspan="2"><div align="right">Top Player </div></td>
+    </tr>
+    <tr class="tablerow2">
+      <td></td>
+      <td width="99"></td>
+      <td width="165"></td>
+    </tr>
+	<loop name="awards">
+    <tr class="{awards.class}">
+      <td>{awards.monthaward}:</td>
+      <td><div align="right">{awards.value}</div></td>
+      <td><div align="right">{awards.player}</div></td>
+    </tr>
+</loop name="awards">  </table>
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/month_awards.htm 1.0.0</div>

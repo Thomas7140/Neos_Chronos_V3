@@ -1,0 +1,289 @@
+<!-- 'MAIN' TEMPLATE                        -->
+<!-- AUTHOR : Tomas Stucinskas a.k.a Baboon -->
+<!-- EMAIL  : baboon@ai-hq.com              -->
+
+
+<html>
+  <head>
+    <meta http-equiv=Content-Type content=text/html; charset={charset}>
+    <meta NAME="Author" CONTENT="Tomas Stucinskas a.k.a Baboon">
+    <title>{website_title} - Powered by BAB.stats Chronos</title>
+	<link rel="shortcut icon" href="templates/favicon.ico" type="image/x-icon" />
+    <style TYPE="text/css">
+      .pagetitle {
+        font-weight : bold;
+        font-size: 20px;
+        font-family : Tahoma, Verdana, Arial;
+        color: #DDDDDD;
+      }
+
+      .header {
+        background-color : #996633;
+        font-weight : bold;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        color: #DDDDDD;
+      }
+
+      .text {
+        font-weight : normal;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        color: #CCCCCC;
+      }
+
+      .multipage {
+        font-weight : normal;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        color: #BBBBBB;
+      }
+
+      .main {
+        background-color : #606060;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : justify;
+        color: #CCCCCC;
+      }
+
+      .tablerow1 {
+        background-color : #404040;
+        font-weight : normal;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : left;
+        color: #EEEEEE;
+      }
+     
+      .tablerow2 {
+        background-color : #303030;
+        font-weight : normal;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : left;
+        color: #EEEEEE;
+      }
+	  
+	  .tablerow3 {  
+		border-left:thin solid #555555;
+		text-align : right;
+      }
+	  
+	  .tablerow4 {  
+		border-left:thin solid #555555;
+		text-align : left;
+      }
+
+      .tableheader {
+        background-color : #505050;
+        font-weight : bold;
+        font-size: 10px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : left;
+        color: #EEEEEE;
+      }
+
+      .selectedasc {
+        background-color : #505050;
+        font-weight : bold;
+        font-size: 10px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : left;
+        color: #EEEEEE;
+      }
+
+      .selecteddesc {
+        background-color : #505050;
+        font-weight : bold;
+        font-size: 10px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : left;
+        color: #EEEEEE;
+      }
+
+      .unselected {
+        background-color : #505050;
+        font-weight : bold;
+        font-size: 10px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : left;
+        color: #EEEEEE;
+      }
+
+      .title {
+        font-weight : bold;
+        font-size: 12px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : center;
+        color: #EEEEEE;
+      }
+
+      .navigation {
+        background-color : #303030;
+        font-weight : bold;
+        font-size: 10px;
+        font-family : Tahoma, Verdana, Arial;
+        color: #DDDDDD;
+      }
+
+      .playermedals {
+        font-weight : normal;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        text-align : center;
+        color: #CCCCCC;
+      }
+
+      .blue {color: #1796CB;}
+      .red {color: #E3553C;}
+	  .orange {color: #FF6600;}
+	  .orange2 {color: #FFD200;}
+      .yellow {color: yellow;}
+      .violet {color: violet;}
+      .green {color: #44DD44;}
+      .none {color: #44DD44;}
+
+      body {
+        background-color: #000000;
+        scrollbar-3d-light-color : #000000;
+        scrollbar-arrow-color : #DDDDDD;
+        scrollbar-base-color : #DDDDDD;
+        scrollbar-dark-shadow-color : #000000;
+        scrollbar-face-color : #000000;
+        scrollbar-highlight-color : #000000;
+        scrollbar-shadow-color : #DDDDDD;
+      }
+
+      a:link{color: #EEAA50; text-decoration:none;}
+      a:visited {color: #EEAA50; text-decoration:none;}
+      a:hover{color: #FFBB60; text-decoration:underline;}
+
+      input, option, textarea, select {
+        color : silver;
+        background-color : #404040;
+        font-size: 11px;
+        font-family : Tahoma, Verdana, Arial;
+        border-top : 1px solid Silver;
+        border-left : 1px solid Silver;
+        border-right : 1px solid Silver;
+        border-bottom : 1px solid Silver;
+      }
+      
+      hr {
+        color : #000000;
+        height : 1;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <table border="3" cellpadding="0" cellspacing="0" style="border-collapse: collapse" width="100%">
+      <tr>
+        <td width="100%">
+        <div align="center">
+          <center>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="4" style="border-collapse: collapse" height="97">
+      <tr class="header">
+        <td align="left" width="230" rowspan="2" style="background-color: #000000" background="templates/bg.jpg">
+        <p align="center">&nbsp;&nbsp;<font class="pagetitle">{website_title}</font></td>
+        <td align="left" valign="middle" width="154" rowspan="2" style="background-color: #000000">
+        <p align="right">Stats &raquo;
+          <a href="{mainscript}action=kill_stats"><font color="#FFBB60">Kill/Death Stats</font></a> ::<br>
+&nbsp;<a href="{mainscript}action=goal_stats"><font color="#FFBB60">Goal Stats</font></a> ::
+        <br>
+        <font color="#FFBB60">
+          <a href="{mainscript}action=weapon_stats"><font color="#FFBB60">Weapon Stats</font></a></font> ::
+        <br>
+        <font color="#FFBB60">
+          <a href="{mainscript}action=squad_stats"><font color="#FFBB60">Squad Stat</font></a></font><a href="{mainscript}action=squad_stats"><font color="#FFBB60">s</font></a> ::<br>
+&nbsp;<a href="{mainscript}action=map_stats"><font color="#FFBB60">Map Stats</font></a> ::
+        <br>
+        <font color="#FFBB60"> <a href="{mainscript}action=compare_stats">
+        <font color="#FFBB60">Compare Stats</font></a></font> ::<a href="{monthlyscript}action=kill_stats">
+        <font color="#FFBB60"><br>
+        </font></a><a href="../index.php?action=kill_stats">Overall Stats</a> :: <br>
+        &nbsp;</td>
+        <td align="right" valign="top" colspan="3" width="487" style="background-color: #000000">
+          Monthly Stats<br>
+          <form method="post" action="{mainscript}action=search">
+            <p>Search Player&nbsp;
+            <input type="text" name="playername" size="21" maxlength="40" style="color: silver; font-size: 11px; font-family: Tahoma, Verdana, Arial; border: 1px solid Silver; background-color: #404040">
+            <input type="submit" name="submit" value="Search" style="color: silver; font-size: 11px; font-family: Tahoma, Verdana, Arial; border: 1px solid Silver; background-color: #404040">
+            </p>
+          </form>
+        </td>
+      </tr>
+      <tr class="header">
+        <td align="center" width="306" style="background-color: #000000">
+          <a target="_blank" href="http://www.babstats.com/">
+        <img border="0" src="../templates/BabstatsModuleHeader.jpg" align="right" width="250" height="50"></a></td>
+        <td align="right" valign="bottom" width="164" style="background-color: #000000">
+          <a href="../admin.php">Admin</a> ::<a href="{mainscript}action=servers"> </a>
+          <br>
+          <a href="../index.php?action=servers">Servers</a> :: <br>
+          <a href="../index.php?action=ranks">Ranks</a> :: <br>
+          <a href="../index.php?action=awards">Awards</a> ::<br>
+&nbsp;<a href="../index.php?action=faq">FAQ</a> ::</td>
+        <td align="right" bordercolor="#000000" valign="bottom" width="4" style="background-color: #000000">&nbsp;
+          </td>
+      </tr>
+    </table>
+
+          </center>
+        </div>
+        <div align="center">
+          <center>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="2" style="border-collapse: collapse" height="3">
+      <tr class="navigation">
+        <td align="left" height="4" width="200">
+          <p align="right">
+          </td>
+      </tr>
+    </table>
+
+          </center>
+        </div>
+        <div align="center">
+          <center>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="4" style="border-collapse: collapse">
+      <tr class="main">
+        <td valign="top" align="center" style="background-color: #000000" background="templates/bg.jpg">
+          <br>
+          {content}
+          <br>
+        </td>
+      </tr>
+    </table>
+
+          </center>
+        </div>
+        <div align="center">
+          <center>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="2" style="border-collapse: collapse">
+      <tr class="navigation">
+        <td align="left" width="86%">
+          Powered by Bab.stats ::
+          <a target="_blank" href="http://www.babstats.com/">Neos.Chronos</a> ::
+          Version {version} ::
+          "Default" template by Baboon & �zr��l , modded by Shark -oZi- ::.
+        </td>
+        <td align="right" width="114%">
+          <a href="{mainscript}action=about">About Babstats</a> :.</td>
+      </tr>
+    </table>
+          </center>
+        </div>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>
+
+<div style="visibility:hidden; font-size:xx-small;">monthlystats/templates/main.htm 1.0.0</div>

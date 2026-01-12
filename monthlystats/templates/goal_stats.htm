@@ -1,0 +1,344 @@
+<!-- TEMPLATE     : 'MONTHLY GOAL STATS'            -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 2nd May 2005                    -->
+ 
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">Goal Stats - {gametype}</p>
+    
+  <form method="post" action="{formurl}">
+    Squad&nbsp;
+    <select name="squad">
+      <loop name="squads">
+        <option value="{squads.id}" {squads.selected}>{squads.name}</option>
+      </loop name="squads">
+    </select>
+    &nbsp;&nbsp;Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+   
+  <p class="multipage">{multipage}</p>
+  {stats_table}
+  <p class="multipage">{multipage}</p>
+</block name="main">
+
+<!-- COOPERATIVE TABLE -->
+<block name="coop_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="50"><div align="right"><a href="{score_1_sort}">Score</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{avg_score_1}" width="65"><div align="right"><a href="{avg_score_1_sort}">Score/Min</a>&nbsp;<img src="{base}templates/{avg_score_1}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td>{players.score_1}</td>
+        <td>{players.avg_score_1}</td>
+        <td>{players.time}</td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="coop_stats">
+
+<!-- DEATHMATCH TABLE -->
+<block name="dm_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="50"><div align="right"><a href="{score_1_sort}">Score</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{avg_score_1}" width="65"><div align="right"><a href="{avg_score_1_sort}">Score/Min</a>&nbsp;<img src="{base}templates/{avg_score_1}.gif" border="0"></div></td>
+      <td class="{ratio}" width="50"><div align="right"><a href="{ratio_sort}">Ratio</a>&nbsp;<img src="{base}templates/{ratio}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won</a>&nbsp;<img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Deathmatch}</div></td>
+        <td><div align="right">{players.avg_score_1}</div></td>
+        <td><div align="right"><span class="{players.r_class}">{players.ratio}</span></div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="dm_stats">
+
+<!-- TEAM DEATHMATCH TABLE -->
+<block name="tdm_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="50"><div align="right"><a href="{score_1_sort}">Score</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{pspattempts}" width="60"><div align="right"><a href="{pspattempts_sort}">PSP Att. </a> <img src="{base}templates/{pspattempts}.gif" border="0"></div></td>
+      <td class="{psptakeovers}" width="60"><div align="right"><a href="{psptakeovers_sort}">PSP To. </a> <img src="{base}templates/{psptakeovers}.gif" border="0"></div></td>
+      <td class="{psppercent}" width="80"><div align="right"><a href="{psppercent_sort}">PSP Percent </a> <img src="{base}templates/{psppercent}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won </a><img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played </a><img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="center">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Team Deathmatch}</div></td>
+        <td><div align="right">{players.pspattempts}</div></td>
+        <td><div align="right">{players.psptakeovers}</div></td>
+        <td><div align="right">{players.psppercent} % </div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="tdm_stats">
+
+<!-- KING OF THE HILL TABLE -->
+<block name="koth_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="70"><div align="right"><a href="{score_1_sort}">Zone Time</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{avg_score_1}" width="90"><div align="right"><a href="{avg_score_1_sort}">Zone Time/Min</a>&nbsp;<img src="{base}templates/{avg_score_1}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.King of the Hill}</div></td>
+        <td><div align="right">{players.avg_score_1}</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="koth_stats">
+
+<!-- TEAM KING OF THE HILL TABLE -->
+<block name="tkoth_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="70"><div align="right"><a href="{score_1_sort}">Zone Time</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{score_2}" width="60"><div align="right"><a href="{score_2_sort}">Att Kills</a>&nbsp;<img src="{base}templates/{score_2}.gif" border="0"></div></td>
+      <td class="{score_3}" width="60"><div align="right"><a href="{score_3_sort}">Def Kills</a>&nbsp;<img src="{base}templates/{score_3}.gif" border="0"></div></td>
+      <td class="{psptakeovers}" width="60"><div align="right"><a href="{psptakeovers_sort}">PSP's</a> <img src="{base}templates/{psptakeovers}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won</a>&nbsp;<img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Team King of the Hill}</div></td>
+        <td><div align="right">{players.score_2}</div></td>
+        <td><div align="right">{players.score_3}</div></td>
+        <td><div align="right">{players.psptakeovers}</div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="tkoth_stats">
+
+<!-- CAPTURE THE FLAG TABLE -->
+<block name="ctf_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="50"><div align="right"><a href="{score_1_sort}">Flags</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{score_2}" width="50"><div align="right"><a href="{score_2_sort}">Saves</a>&nbsp;<img src="{base}templates/{score_2}.gif" border="0"></div></td>
+      <td class="{score_3}" width="90"><div align="right"><a href="{score_3_sort}">Carriers Killed</a>&nbsp;<img src="{base}templates/{score_3}.gif" border="0"></div></td>
+      <td class="{psptakeovers}" width="50"><div align="right"><a href="{psptakeovers_sort}">PSPs</a>&nbsp;<img src="{base}templates/{psptakeovers}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won</a>&nbsp;<img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Capture the Flag}</div></td>
+        <td><div align="right">{players.score_2}</div></td>
+        <td><div align="right">{players.score_3}</div></td>
+        <td><div align="right">{players.psptakeovers}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="ctf_stats">
+
+<!-- TEAM FLAGBALL TABLE -->
+<block name="fb_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="50"><div align="right"><a href="{score_1_sort}">Flags</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{score_3}" width="90"><div align="right"><a href="{score_3_sort}">Carriers Killed</a>&nbsp;<img src="{base}templates/{score_3}.gif" border="0"></div></td>
+      <td class="{psptakeovers}" width="50"><div align="right"><a href="{psptakeovers_sort}">PSPs</a>&nbsp;<img src="{base}templates/{psptakeovers}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won</a>&nbsp;<img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Flagball}</div></td>
+        <td><div align="right">{players.score_3}</div></td>
+        <td><div align="right">{players.psptakeovers}</div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="fb_stats">
+
+<!-- ATTACK AND DEFEND TABLE -->
+<block name="ad_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="60"><div align="right"><a href="{score_1_sort}">Targets</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{score_2}" width="80"><div align="right"><a href="{score_2_sort}">Attack Kills</a>&nbsp;<img src="{base}templates/{score_2}.gif" border="0"></div></td>
+      <td class="{score_3}" width="80"><div align="right"><a href="{score_3_sort}">Defend Kills</a>&nbsp;<img src="{base}templates/{score_3}.gif" border="0"></div></td>
+      <td class="{psptakeovers}" width="50"><div align="right"><a href="{psptakeovers_sort}">PSPs</a>&nbsp;<img src="{base}templates/{psptakeovers}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won</a>&nbsp;<img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Attack and Defend}</div></td>
+        <td><div align="right">{players.score_2}</div></td>
+        <td><div align="right">{players.score_3}</div></td>
+        <td><div align="right">{players.psptakeovers}</div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="ad_stats">
+
+<!-- SEARCH AND DESTROY TABLE -->
+<block name="sd_stats">
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{rating}" width="40"><a href="{rating_sort}">Rank</a>&nbsp;<img src="{base}templates/{rating}.gif" border="0"></td>
+      <td class="{name}" width="100"><a href="{name_sort}">Player Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{score_1}" width="60"><div align="right"><a href="{score_1_sort}">Targets</a>&nbsp;<img src="{base}templates/{score_1}.gif" border="0"></div></td>
+      <td class="{level}" width="50"><div align="right"><a href="{level_sort}">Level</a>&nbsp;<img src="{base}templates/{level}.gif" border="0"></div></td>
+      <td class="{score_2}" width="80"><div align="right"><a href="{score_2_sort}">Attack Kills</a>&nbsp;<img src="{base}templates/{score_2}.gif" border="0"></div></td>
+      <td class="{score_3}" width="80"><div align="right"><a href="{score_3_sort}">Defend Kills</a>&nbsp;<img src="{base}templates/{score_3}.gif" border="0"></div></td>
+      <td class="{psptakeovers}" width="50"><div align="right"><a href="{psptakeovers_sort}">PSPs</a>&nbsp;<img src="{base}templates/{psptakeovers}.gif" border="0"></div></td>
+      <td class="{games}" width="50"><div align="right"><a href="{games_sort}">Games</a>&nbsp;<img src="{base}templates/{games}.gif" border="0"></div></td>
+      <td class="{wins}" width="50"><div align="right"><a href="{wins_sort}">Wins</a>&nbsp;<img src="{base}templates/{wins}.gif" border="0"></div></td>
+      <td class="{percent_won}" width="80"><div align="right"><a href="{percent_won_sort}">Percent Won</a>&nbsp;<img src="{base}templates/{percent_won}.gif" border="0"></div></td>
+      <td class="{time}" width="78"><div align="right"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td><div align="right">{players.num}</div></td>
+        <td><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.score_1}</div></td>
+        <td><div align="right">{players.Search and Destroy}</div></td>
+        <td><div align="right">{players.score_2}</div></td>
+        <td><div align="right">{players.score_3}</div></td>
+        <td><div align="right">{players.psptakeovers}</div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right">{players.wins}</div></td>
+        <td><div align="right">{players.percent_won} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="sd_stats">
+
+<!-- UNKNOWN GAMETYPE -->
+<block name="unknown">
+  Unknown Gametype
+</block name="unknown">
+
+<div style="visibility:hidden; font-size:xx-small;">monthlystats/templates/goal_stats.htm 1.0.0</div>

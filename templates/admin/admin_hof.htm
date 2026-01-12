@@ -1,0 +1,137 @@
+<!-- TEMPLATE  : 'ADMIN/HOF'                    -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL     : azrael@tdosquad.co.uk          -->
+<!-- FINALIZED : 1st May 2005                   -->
+
+
+<!-- MAIN BLOCK -->
+<block name="main">
+<p class="title">Hall Of Fame Admin</p>
+
+  <form action="{mainscript}action=admin_set_hof" method="post">
+    <table width="500">
+      <tr>
+        <td width="179" valign="top"><div align="center">
+          <table width="100%">
+            <tr class="tableheader">
+              <td colspan="2"><div align="center">Current Criteria </div></td>
+            </tr>
+            <tr class="tablerow2">
+              {games}
+            </tr>
+            <tr>
+              {crit1}
+            </tr>
+			<tr>
+              {crit2}
+            </tr>
+			<tr>
+              {crit3}
+            </tr>
+			<tr>
+              {crit4}
+            </tr>
+			<tr>
+              {crit5}
+            </tr>
+			<tr>
+              {crit6}
+            </tr>
+          </table>
+                    <br>        
+        </div></td>
+        <td width="84">&nbsp;</td>
+        <td width="221" valign="top"><div align="center">
+          <table width="100%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Criteria Options </div></td>
+            </tr>
+            <tr>
+              <td width="50%" class="tablerow2">Team games:</td>
+              <td width="50%" class="tablerow1">{games_select}
+              </td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Rating pts :</td>
+              <td class="tablerow1">{rating_select}
+              </td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Time played :</td>
+              <td class="tablerow1">              {ptime_select}              </td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Awards:</td>
+              <td class="tablerow1">{awards_select}
+              </td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Weapon awards :</td>
+              <td class="tablerow1">{wpn_awards_select}
+              </td>
+            </tr>
+            <tr>
+              <td class="tablerow2">Kills:</td>
+              <td class="tablerow1">{kills_select}
+              </td>
+            </tr>
+			<tr>
+			  <td colspan="2" class="tableheader"><div align="center">
+			    <input name="criteria_options" type="submit" id="criteria_options" value="Set Values">
+			  </div></td>
+			</tr>
+          </table>
+        </div></td>
+      </tr>
+    </table>
+  </form>  
+</block name="main">
+
+<!-- SET CRITERIA BLOCK -->
+<block name="set_criteria">
+<p class="title">Hall Of Fame Admin</p>
+
+  <form action="{adminaction}" method="post" name="criteria" id="criteria">
+    <table width="210">
+      <tr>
+        <td width="200" valign="top"><div align="center">
+          <table width="100%">
+            <tr class="tableheader">
+              <td colspan="2"><div align="center">Set Criteria Values</div></td>
+            </tr>
+            <tr class="tablerow2">
+              {games}
+            </tr>
+            <tr>
+              {crit1}
+            </tr>
+			<tr>
+              {crit2}
+            </tr>
+			<tr>
+              {crit3}
+            </tr>
+			<tr>
+              {crit4}
+            </tr>
+			<tr>
+              {crit5}
+            </tr>
+			<tr>
+              {crit6}
+            </tr>
+			<tr>
+			</tr>
+			<tr class="tableheader">
+			  <td colspan="2"><div align="center">
+			    <input name="set_criteria" type="submit" id="set_criteria" value="Set Criteria">
+		      </div></td>
+			</tr>
+          </table>
+		</td>
+      </tr>
+    </table>
+  </form>  
+</block name="set_criteria">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_hof.htm 1.0.0</div>

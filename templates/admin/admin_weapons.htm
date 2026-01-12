@@ -1,0 +1,52 @@
+<!-- TEMPLATE  : 'ADMIN/WEAPONS'                -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL     : azrael@tdosquad.co.uk          -->
+<!-- FINALIZED : 28th APRIL 2005                -->
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">Weapons Admin</p>
+
+  <form name="form1" method="post" action="{adminaction}">
+  <table border="0" cellspacing="0" cellpadding="3">
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{name}">&nbsp;</td>
+      <td class="{name}" width="150"><a href="{name_sort}"><img src="{base}templates/{name}.gif" border="0"> Weapon Name</a></td>
+      <td class="{image}"><div align="center">Image</div></td>
+      <td class="{kills}"><div align="right"><a href="{kills_sort}"><img src="{base}templates/{kills}.gif" border="0"> Kills</a></div></td>
+      <td class="{shots_fired}"><div align="right"><a href="{shots_fired_sort}"><img src="{base}templates/{shots_fired}.gif" border="0"> Shot Fired</a></div></td>
+      <td class="{time}"><a href="{time_used_sort}"><img src="{base}templates/{time_used}.gif" border="0"> Time Used</a></td>
+      <td class="{accuracy}"><div align="center"><a href="{accuracy_sort}"><img src="{base}templates/{accuracy}.gif" border="0"> Accuracy</a></div></td>
+    </tr>
+    <loop name="weapons">
+      <tr class="{weapons.class}">
+        <td>{weapons.num}</td>
+        <td><input type="checkbox" name="checkbox[]" value="{weapons.id}"></td>
+        <td>{weapons.name}</td>
+        <td><div align="center"><span class="{weapons.wp_class}">{weapons.pic}</span></div></td>
+        <td><div align="right">{weapons.kills}</div></td>
+        <td><div align="right">{weapons.shots_fired}</div></td>
+        <td><div align="right">{weapons.time}</div></td>
+        <td><div align="right">{weapons.accuracy}%</div></td>
+      </tr>
+    </loop name="weapons">
+  </table>
+  <br>
+  <br>
+  <table width="200">
+    <tr>
+      <td colspan="2" class="tableheader"><div align="center">Options</div></td>
+    </tr>
+    <tr>
+      <td width="125" class="tablerow2">Reset stats of selected: </td>
+      <td width="63" class="tablerow1"><div align="center">
+        <input name="reset_weapons" type="submit" id="reset_weapons" value="Reset">
+      </div></td>
+    </tr>
+  </table>
+  </form>
+
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_weapons.htm 1.0.0</div>

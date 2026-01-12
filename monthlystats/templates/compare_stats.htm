@@ -1,0 +1,194 @@
+<!-- TEMPLATE     : 'MONTHLY COMPARE PLAYER STATS'  -->
+<!-- AUTHOR       : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 6th May 2005                    -->
+
+
+<!-- MAIN BLOCK --> 
+<block name="main">
+  <p class="title">Compare Player Stats</p>
+  <form method="post" action="{formurl}">
+    <span class="style5">Player 1</span>
+      <select name="player1">
+      <loop name="player1">
+        <option value="{player1.id}" {servers.selected}>{player1.name}</option>
+      </loop name="player1">
+    </select>
+    <span class="style5">Player 2</span>
+    <select name="player2">
+      <loop name="player2">
+        <option value="{player2.id}" {gametypes.selected}>{player2.name}</option>
+      </loop name="player2">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+<table width="600">
+  <tr>
+    <td width="200"><div align="right">
+      <table width="100%">
+        <tr class="tableheader">
+          <td><div align="center">{name}</div></td>
+        </tr>
+      </table>
+      <table width="100%" >
+        <tr class="tableheader">
+          <td width="70%">Stat</td>
+          <td>Total</td>
+        </tr>
+        <tr  class="tablerow1">
+          <td width="70%">Kills</td>
+          <td width="30%">{kills}</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="70%">Deaths</td>
+          <td width="30%">{deaths}</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="70%">Knifings</td>
+          <td width="30%">{knifings}</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="70%">Headshots</td>
+          <td width="30%">{headshots}</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="70%">Suicides</td>
+          <td width="30%">{suicides}</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="70%">Murders</td>
+          <td width="30%">{murders}</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="70%">Med.Saves</td>
+          <td width="30%">{medic_saves}</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="70%">Revives</td>
+          <td width="30%">{revives}</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="70%">Kill-Death Ratio </td>
+          <td width="30%">{ratio}</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="70%">Games Won </td>
+          <td width="30%">{wins}</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="70%">Rating pts </td>
+          <td width="30%">{rating}</td>
+        </tr>
+      </table>
+    </div></td>
+    <td width="200"><div align="center">
+      <table width="190">
+        <tr class="tableheader">
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+      <table width="190" >
+        <tr class="tableheader">
+          <td>&nbsp;</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="190"><div align="center"><img src="{base}templates/{colork}.gif" border="1" width="{per_kills}" height="11"><img src="{base}templates/{colork2}.gif" border="1" width="{per_kills2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="190"><div align="center"><img src="{base}templates/{colord}.gif" border="1" width="{per_deaths}" height="11"><img src="{base}templates/{colord2}.gif" border="1" width="{per_deaths2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="190"><div align="center"><img src="{base}templates/{colorkn}.gif" border="1" width="{per_knifings}" height="11"><img src="{base}templates/{colorkn2}.gif" border="1" width="{per_knifings2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="190"><div align="center"><img src="{base}templates/{colorh}.gif" border="1" width="{per_headshots}" height="11"><img src="{base}templates/{colorh2}.gif" border="1" width="{per_headshots2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="190"><div align="center"><img src="{base}templates/{colors}.gif" border="1" width="{per_suicides}" height="11"><img src="{base}templates/{colors2}.gif" border="1" width="{per_suicides2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="190"><div align="center"><img src="{base}templates/{colorm}.gif" border="1" width="{per_murders}" height="11"><img src="{base}templates/{colorm2}.gif" border="1" width="{per_murders2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="190"><div align="center"><img src="{base}templates/{colorms}.gif" border="1" width="{per_medic_saves}" height="11"><img src="{base}templates/{colorms2}.gif" border="1" width="{per_medic_saves2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="190"><div align="center"><img src="{base}templates/{colorr}.gif" border="1" width="{per_revives}" height="11"><img src="{base}templates/{colorr2}.gif" border="1" width="{per_revives2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="190"><div align="center"><img src="{base}templates/{colorkr}.gif" border="1" width="{per_ratio}" height="11"><img src="{base}templates/{colorkr2}.gif" border="1" width="{per_ratio2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="190"><div align="center"><img src="{base}templates/{colorw}.gif" border="1" width="{per_wins}" height="11"><img src="{base}templates/{colorw2}.gif" border="1" width="{per_wins2}" height="11"></div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="190"><div align="center"><img src="{base}templates/{colorra}.gif" border="1" width="{per_rating}" height="11"><img src="{base}templates/{colorra2}.gif" border="1" width="{per_rating2}" height="11"></div></td>
+        </tr>
+      </table>
+    </div></td>
+    <td width="200"><div align="left">
+      <table width="100%" >
+        <tr class="tableheader">
+          <td><div align="center">{name2}</div></td>
+        </tr>
+      </table>
+      <table width="100%" >
+        <tr class="tableheader">
+          <td>Total</td>
+          <td width="70%">Stat</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="30%">{kills2}</td>
+          <td width="70%">Kills</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="30%">{deaths2}</td>
+          <td width="70%">Deaths</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="30%">{knifings2}</td>
+          <td width="70%">Knifings</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="30%">{headshots2}</td>
+          <td width="70%">Headshots</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="30%">{suicides2}</td>
+          <td width="70%">Suicides</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="30%">{murders2}</td>
+          <td width="70%">Murders</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="30%">{medic_saves2}</td>
+          <td width="70%">Med.Saves</td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="30%">{revives2}</td>
+          <td width="70%">Revives</td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="30%">{ratio2}</td>
+          <td width="70%">Kill-Death Ratio </td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="30%">{wins2}</td>
+          <td width="70%">Games Won </td>
+        </tr>
+        <tr class="tablerow1">
+          <td width="30%">{rating2}</td>
+          <td width="70%">Rating pts</td>
+        </tr>
+      </table>
+    </div></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">monthlystats/templates/compare_stats.htm 1.0.0</div>

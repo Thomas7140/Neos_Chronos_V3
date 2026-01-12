@@ -1,0 +1,254 @@
+<!-- TEMPLATE     : 'MONTHLY SQUAD STATS'           -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 6th May 2005                    -->
+
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">Squad Stats</p>
+  
+  <form method="post" action="{formurl}">
+    Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+  
+  <p class="multipage">{multipage}</p>
+  
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{name}" width="50"><a href="{name_sort}">Squad</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{kills}" width="50"><div align="center"><a href="{kills_sort}">Kills</a>&nbsp;<img src="{base}templates/{kills}.gif" border="0"></div></td>
+      <td class="{deaths}" width="50"><div align="center"><a href="{deaths_sort}">Deaths</a>&nbsp;<img src="{base}templates/{deaths}.gif" border="0"></div></td>
+      <td class="{ratio}" width="50"><div align="center"><a href="{ratio_sort}">Ratio</a>&nbsp;<img src="{base}templates/{ratio}.gif" border="0"></div></td>
+      <td class="{headshots}" width="65"><div align="center"><a href="{headshots_sort}">Headshots</a>&nbsp;<img src="{base}templates/{headshots}.gif" border="0"></div></td>
+      <td class="{knifings}" width="55"><div align="center"><a href="{knifings_sort}">Knifings</a>&nbsp;<img src="{base}templates/{knifings}.gif" border="0"></div></td>
+      <td class="{suicides}" width="55"><div align="center"><a href="{suicides_sort}">Suicides</a>&nbsp;<img src="{base}templates/{suicides}.gif" border="0"></div></td>
+      <td class="{murders}" width="55"><div align="center"><a href="{murders_sort}">Murders</a>&nbsp;<img src="{base}templates/{murders}.gif" border="0"></div></td>
+      <td class="{doublekills}" width="75"><div align="center">Members</div></td>
+      <td class="{time}" width="78"><div align="center"><a href="{time_sort}">Time Played</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="squads">
+      <tr class="{squads.class}">
+        <td><div align="right">{squads.num}</div></td>
+        <td><a href="{mainscript}action=squad_details&id={squads.id}">{squads.tag}</a></td>
+        <td><div align="right">{squads.kills}</div></td>
+        <td><div align="right">{squads.deaths}</div></td>
+        <td><div align="right"><span class="{squads.r_class}">{squads.ratio}</span></div></td>
+        <td><div align="right">{squads.headshots}</div></td>
+        <td><div align="right">{squads.knifings}</div></td>
+        <td><div align="right">{squads.suicides}</div></td>
+        <td><div align="right">{squads.murders}</div></td>
+        <td><div align="right">{squads.mem}</div></td>
+        <td><div align="right">{squads.time}</div></td>
+      </tr>
+    </loop name="squads">
+  </table>
+  
+  <p class="multipage">{multipage}</p>
+</block name="main">
+  
+<!-- SQUAD DETAILS BLOCK -->
+<block name="squad_details">
+  <p class="title">Squad {name} - {tag} Stats</p>
+  <a href="{url}" target="_blank">Visit Homepage</a>
+
+  <form method="post" action="{formurl}">
+    &nbsp;&nbsp;Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+<table>
+    <tr>
+      <td>
+  <table>
+    <tr>
+      <td valign="top" align="left">
+     
+        <table>
+          <tr class="tableheader">
+            <td colspan="3">Squad Stats</td>
+          </tr>
+          <tr class="tablerow1">
+            <td width="70">Kills</td>
+            <td width="60">{kills}</td>
+            <td width="124"><img src="{base}templates/green_bar.gif" border="1" width="{len_kills}" height="13"></td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Headshots</td>
+            <td>{headshots}</td>
+            <td><img src="{base}templates/green_bar.gif" border="1" width="{len_headshots}" height="13">&nbsp;&nbsp;<small>{percent_headshots} % of Kills</small></td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Knifings</td>
+            <td>{knifings}</td>
+            <td><img src="{base}templates/green_bar.gif" border="1" width="{len_knifings}" height="13">&nbsp;&nbsp;<small>{percent_knifings} % of Kills</small></td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Sniper Kills</td>
+            <td>{sniper_kills}</td>
+            <td><img src="{base}templates/green_bar.gif" border="1" width="{len_sniper_kills}" height="13">&nbsp;&nbsp;<small>{percent_sniper_kills} % of Kills</small></td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Deaths</td>
+            <td>{deaths}</td>
+            <td><img src="{base}templates/red_bar.gif" border="1" width="{len_deaths}" height="13"></td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Suicides</td>
+            <td>{suicides}</td>
+            <td><img src="{base}templates/red_bar.gif" border="1" width="{len_suicides}" height="13"></td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Murders</td>
+            <td>{murders}</td>
+            <td><img src="{base}templates/red_bar.gif" border="1" width="{len_murders}" height="13"></td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Med. Saves</td>
+            <td>{medic_saves}</td>
+            <td><img src="{base}templates/green_bar.gif" border="1" width="{len_medic_saves}" height="13"></td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Revived</td>
+            <td>{revives}</td>
+            <td><img src="{base}templates/green_bar.gif" border="1" width="{len_revives}" height="13"></td>
+          </tr>
+        </table>
+      
+      </td>
+    </tr>
+  </table>
+</td>
+      <td valign="top"><table>
+        <tr>
+          <td colspan="2" class="tableheader">Game Type Levels </td>
+        </tr>
+        <tr class="tablerow2">
+          <td width="60">DM:</td>
+          <td width="52"><div align="right">{Deathmatch}</div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td>TDM:</td>
+          <td><div align="right">{Team Deathmatch}</div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td>TKOTH:</td>
+          <td><div align="right">{Team King of the Hill}</div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td>S&amp;D:</td>
+          <td><div align="right">{Search and Destroy}</div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td>A&amp;D:</td>
+          <td><div align="right">{Attack and Defend}</div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td>CTF:</td>
+          <td><div align="right">{Capture the Flag}</div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td>FB:</td>
+          <td><div align="right">{Flagball}</div></td>
+        </tr>
+      </table></td>
+      <td valign="top">
+	  <table>
+	  <tr>
+	  <td colspan="2" class="tableheader">Weapon Usage </td>
+        </tr>
+        <tr class="tablerow2">
+          <td>Assault Rifles: </td>
+          <td width="50"><div align="right">{assault} % </div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td>Support Guns: </td>
+          <td><div align="right">{support} %</div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td>Sniper Rifles: </td>
+          <td><div align="right">{sniper} %</div></td>
+        </tr>
+        <tr class="tablerow1">
+          <td>Secondary:</td>
+          <td><div align="right">{secondary} %</div></td>
+        </tr>
+        <tr class="tablerow2">
+          <td>Other:</td>
+          <td><div align="right">{other} %</div></td>
+	  </tr>
+        <tr class="tablerow2">
+          <td>Emplacements:</td>
+          <td><div align="right">{emplace} % </div></td>
+        </tr>
+	  </table>
+	  </td>
+    </tr>
+  </table>
+  <br>
+
+  <table>
+    <tr>
+	  <td colspan="3">&nbsp;</td>
+	  <td class="tablerow2" colspan="4"><div align="center">This Month </div></td>
+	  <td class="tablerow1" colspan="4"><div align="center">Overall</div></td>
+    </tr>
+    <tr class="tableheader">
+      <td width="150" colspan="3">Squad Members</td>
+      <td width="40"><div align="right">Kills</div></td>
+      <td width="40"><div align="right">Deaths</div></td>
+      <td width="40"><div align="right">Ratio</div></td>
+      <td><div align="right">Time Played</div></td>
+      <td width="40"><div align="right">Kills</div></td>
+      <td width="40"><div align="right">Deaths</div></td>
+      <td width="40"><div align="right">Ratio</div></td>
+      <td><div align="right">Time Played</div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td width="10"><div align="right">{players.num}</div></td>
+        <td width="40"><div align="center"><img src="../{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td width="100"><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.kills}</div></td>
+        <td><div align="right">{players.deaths}</div></td>
+        <td><div align="right"><span class="{players.r_class}">{players.ratio}</span></div></td>
+        <td><div align="right">{players.time}</div></td>
+        <td><div align="right">{players.mkills}</div></td>
+        <td><div align="right">{players.mdeaths}</div></td>
+        <td><div align="right"><span class="{players.mr_class}">{players.mratio}</span></div></td>
+        <td><div align="right">{players.mtime}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="squad_details">
+
+<div style="visibility:hidden; font-size:xx-small;">monthlystats/templates/squad_stats.htm 1.0.0</div>

@@ -1,0 +1,110 @@
+<!-- TEMPLATE     : 'ADMIN/AWARDS'                  -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon  -->
+<!-- EMAIL        : baboon@ai-hq.com               -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL        : azrael@tdosquad.co.uk          -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk      -->
+<!-- FINALIZED    : 28th April 2005                -->
+
+
+<!-- MAIN BLOCK --> 
+<block name="main">
+  <p class="title">Awards Admin</p>
+  
+  Total number of awards - {num}
+  
+  <form name="form1" method="post" action="{adminaction}">
+    <table width="702" class="title">
+      <tr>
+        <td width="20">&nbsp;</td>
+        <td width="25">&nbsp;</td>
+        <td width="208">Name</td>
+        <td width="120">Image</td>
+        <td width="68">Field</td>
+        <td width="48">Value</td>
+        <td width="181">Description</td>
+      </tr>
+	  <loop name="awards">
+      <tr class="{awards.class}">
+        <td><div align="center">
+          <input type="checkbox" name="checkbox[]" value="{awards.id}"{awards.opt}>
+        </div></td>
+        <td><div align="center"><img src="{base}{awards.image}" alt="{awards.description}" width="40" height="25" border="0"></div></td>
+            <input name="aw{awards.id}[]" type="hidden" id="aw{awards.id}[]" value="{awards.id}">
+		<td><input name="aw{awards.id}[]" type="text" id="aw{awards.id}[]" value="{awards.name}" size="25"></td>
+        <td><input name="aw{awards.id}[]" type="text" id="aw{awards.id}[]" value="{awards.image}" size="20"></td>
+        <td>{awards.field_select}</td>
+        <td><input name="aw{awards.id}[]" type="text" id="aw{awards.id}[]" value="{awards.value}" size="8"></td>
+        <td><input name="aw{awards.id}[]" type="text" id="aw{awards.id}[]" value="{awards.description}" size="30"></td>
+      </tr>
+	  </loop name="awards">
+    </table>
+	<br>
+	<table width="700">
+      <tr>
+        <td width="263" valign="top"><div align="right">
+            <table width="57%" >
+              <tr>
+                <td class="tableheader"><div align="center">Options</div></td>
+              </tr>
+              <tr class="tablerow1">
+                <td><div align="center">
+                    <input name="select_awards" type="submit" id="select_awards" value="Select All Awards" style="padding-left:5; text-align:left; width:110">
+                </div></td>
+              </tr>
+              <tr class="tablerow2">
+                <td><div align="center">
+                    <input name="deselect_awards" type="submit" id="deselect_awards" value="Deselect All Awards" style="padding-left:5; text-align:left; width:110">
+                </div></td>
+              </tr>
+              <tr class="tablerow1">
+                <td><div align="center">
+                    <input name="update_awards" type="submit" id="update_awards" value="Update Selected" style="padding-left:5; text-align:left; width:110">
+                </div></td>
+              </tr>
+              <tr class="tablerow2">
+                <td><div align="center">
+                    <input name="delete_selected_awards" type="submit" id="delete_selected_awards" value="Delete Selected" style="padding-left:5; text-align:left; width:110">
+                </div></td>
+              </tr>
+            </table>
+        </div></td>
+        <td width="100">&nbsp;</td>
+        <td width="321"><table width="78%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Add new award</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td width="43%"><input type="hidden" name="id" value="{id}">
+                Name:</td>
+              <td width="57%"><input type="text" size="16" name="new_name" value=""></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>Image:</td>
+              <td><input type="text" size="16" name="new_image" value="awards/"></td>
+            </tr>
+            <tr class="tablerow1">
+              <td>Field:</td>
+              <td>{field_select}</td>
+            </tr>
+            <tr class="tablerow2">
+              <td>Value:</td>
+              <td><input type="text" size="7" name="new_value" value=""></td>
+            </tr>
+            <tr class="tablerow1">
+              <td>Decription:</td>
+              <td><input type="text" size="30" name="new_description" value=""></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>&nbsp;</td>
+              <td><input type="submit" name="add_award" value="Add Award"></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table>
+  </form>
+  <br>
+  <br>
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_awards.htm 1.0.0</div>

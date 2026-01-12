@@ -1,0 +1,156 @@
+<!-- TEMPLATE     : 'MAP STATS'                     -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 6th May 2005                    -->
+
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">Map Stats</p>
+
+  <form method="post" action="{formurl}">
+    Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+  <p class="multipage">{multipage}</p>
+
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td width="80">&nbsp;</td>
+      <td class="{name}" width="150"><a href="{name_sort}">Map Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{hosted}" width="50"><div align="center"><a href="{hosted_sort}">Hosted</a>&nbsp;<img src="{base}templates/{hosted}.gif" border="0"></div></td>
+      <td class="{kills}" width="40"><div align="center"><a href="{kills_sort}">Kills</a>&nbsp;<img src="{base}templates/{kills}.gif" border="0"></div></td>
+      <td class="{score}" width="50"><div align="center"><a href="{score_sort}">Score</a>&nbsp;<img src="{base}templates/{score}.gif" border="0"></div></td>
+      <td class="{time}" width="80"><div align="center"><a href="{time_sort}">Time Hosted</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+    </tr>
+    <loop name="maps">
+      <tr class="{maps.class}" height="70">
+        <td><div align="right">{maps.num}</div></td>
+        <td><div align="center">{maps.thumbnail}</div></td>
+        <td><a href="{mainscript}action=map_details&id={maps.id}">{maps.name}</a></td>
+        <td><div align="right">{maps.hosted}</div></td>
+        <td><div align="right">{maps.kills}</div></td>
+        <td><div align="right">{maps.score}</div></td>
+        <td><div align="right">{maps.time}</div></td>
+      </tr>
+    </loop name="maps">
+  </table>
+
+  <p class="multipage">{multipage}</p>
+</block name="main">
+
+<!-- MAP DETAILS BLOCK -->
+<block name="map_details">
+  <p class="title">Map Details for {name} - {game_type}</p>
+
+  <form method="post" action="{formurl}">
+    &nbsp;&nbsp;Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+  <table width="650" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="300" align="left" valign="top">
+     
+        <table>
+          <tr class="tableheader">
+            <td width="70">Map Stats</td>
+            <td width="110">Total</td>
+            <td width="65">Per Minute</td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Kills</td>
+            <td>{kills}</td>
+            <td>{avg_kills}</td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Score</td>
+            <td>{score}</td>
+            <td>{avg_score}</td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Hosted</td>
+            <td>{hosted}</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Time Hosted</td>
+            <td>{time}</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Last Played </td>
+            <td>{last_played}</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Num of Days </td>
+            <td>{days}</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      
+        </td>
+      <td width="205" align="left" valign="top">&nbsp;</td>
+      <td width="94" align="right" valign="top">
+        {image}
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <table>
+    <tr class="tableheader">
+      <td width="150" colspan="3">Players That Played Most</td>
+      <td width="40"><div align="center">Kills</div></td>
+      <td width="40"><div align="center">Deaths</div></td>
+      <td width="40"><div align="center">Ratio</div></td>
+      <td width="60"><div align="center">Kills/Min</div></td>
+      <td width="70"><div align="center">Deaths/Min</div></td>
+      <td width="50"><div align="center">Score</div></td>
+      <td width="60"><div align="center">Score/Min</div></td>
+      <td width="75"><div align="center">Time Played</div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td width="10"><div align="right">{players.num}</div></td>
+        <td width="40"><div align="center"><img src="{base}{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td width="100"><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.kills}</div></td>
+        <td><div align="right">{players.deaths}</div></td>
+        <td><div align="right"><span class="{players.mpr_class}">{players.mp_ratio}</span></div></td>
+        <td><div align="right">{players.avg_kills}</div></td>
+        <td><div align="right">{players.avg_deaths}</div></td>
+        <td><div align="right">{players.score}</div></td>
+        <td><div align="right">{players.avg_score}</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="map_details">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/map_stats.htm 1.0.0</div>

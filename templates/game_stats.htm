@@ -1,0 +1,141 @@
+<!-- TEMPLATE     : 'WEAPON STATS'                  -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 3rd May 2005                    -->
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">Played Games List</p>
+
+  <form method="post" action="{formurl}">
+    Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+  <p class="multipage">{Multipage}</p>
+
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{name}"><a href="{date_played_sort}">Date Played</a>&nbsp;<img src="{base}templates/{date_played}.gif" border="0"></td>
+      <td class="{game_type}"><div align="right"><a href="{game_type_sort}">Game Type</a>&nbsp;<img src="{base}templates/{game_type}.gif" border="0"></div></td>
+	  <td class="{mapname}"><div align="right"><a href="{mapname_sort}">Map Name</a>&nbsp;<img src="{base}templates/{mapname}.gif" border="0"></div></td>
+      <td class="{players}"><div align="right"><a href="{players_sort}">Players</a>&nbsp;<img src="{base}templates/{players}.gif" border="0"></div></td>
+      <td class="{winner}"><div align="right"><a href="{winner_sort}">Winner</a>&nbsp;<img src="{base}templates/{winner}.gif" border="0"></div></td>
+    </tr>
+    <loop name="games">
+      <tr class="{games.class}" height="32">
+        <td><div align="right">{games.num}</div></td>
+        <td><a href="{mainscript}action=game_details&id={games.id}">{games.date_played}</a></td>
+        <td><div align="right">{games.game_type}</div></td>
+		<td><div align="right">{games.mapname}</div></td>
+        <td><div align="right">{games.players}</div></td>
+        <td><div align="right">{games.winner}</div></td>
+      </tr>
+    </loop name="games">
+  </table>
+  
+  <p class="multipage">{Multipage}</p>
+
+</block name="main">
+
+<!-- Game DETAILS BLOCK -->
+<block name="game_details">
+  <p class="title">Game Details for {date_played}</p>
+
+  <form id="gamesForm" name="gamesForm" method="post" action="{formurl}">
+    Team&nbsp;
+    <select name="team">
+      <option value="1" {blueSel}>Blue Team</option>
+	  <option value="2" {redSel}>Red Team</option>
+    </select>
+    &nbsp;&nbsp;
+    <input type="hidden" name="pidVal" value="{pidVal}">
+	<input type="submit" name="formsubmit" value="GO">
+  
+
+  <table>
+    <tr>
+      <td valign="top" align="left">
+     
+        <table>
+          <tr class="tableheader">
+            <td colspan="2">General Stats</td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Map:</td>
+            <td>{name}</td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Game Type:</td>
+            <td>{game_type}</td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Winner:</td>
+            <td>{winner}</td>
+          </tr>
+		  <tr class="tablerow1">
+            <td>Date Played:</td>
+            <td>{date_played}</td>
+          </tr>
+        </table>
+      
+      </td>
+      <td valign="top" align="right">
+    
+        <table width="160">
+          <tr class="tableheader"><td>Map Image</td></tr>
+          <tr class="tablerow1"><td align="center"><img src="{base}{image}" border="0"></td></tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+  <br />
+
+  <table>
+  	<tr width="15px" class="tableheader">
+		<td align="center" colspan="14">{teamName}</td>
+	</tr>
+    <loop name="blueTeam">
+	  <tr width="15px" class="tableheader">
+        <td width="15px" class="tableheader">{blueTeam.num}</td>
+	    <td width="120px" class="tableheader">
+		    <a href="{mainscript}action=player_stats&id={blueTeam.pID}">{blueTeam.name}</a>
+		</td>
+	    <td width="65px" class="tablerow2" align="center">Experience:</td>
+        <td width="50px" class="tablerow1" align="center">{blueTeam.experience}</td>
+        <td width="50px" class="tablerow2" align="center">Kills:</td>
+        <td width="50px" class="tablerow1" align="center">{blueTeam.kills}</td>
+        <td width="65px" class="tablerow2" align="center">Deaths:</td>
+	    <td width="50px" class="tablerow1" align="center">{blueTeam.deaths}</td>
+        <td width="65px" class="tablerow2" align="center">MedSaves::</td>
+	    <td width="50px" class="tablerow1" align="center">{blueTeam.medsaves}</td>	    
+	    <td width="65px" class="tablerow2" align="center">Ratio:</td>
+		<td width="50px" class="tablerow1" align="center"><span class="{blueTeam.r_class}">{blueTeam.ratio}</span></td>
+		<td width="65px" class="tablerow2" align="center">Time:</td>
+	    <td width="50px" class="tablerow1" align="center">{blueTeam.time}</td>
+ 	  </tr>
+	  {blueTeam.gameStats}
+    </loop name="blueTeam">
+  </table>
+  </form>
+</block name="game_details">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/game_stats.htm 1.0.2</div>

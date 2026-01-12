@@ -1,0 +1,23 @@
+<!-- TEMPLATE : 'SEARCH'                      -->
+<!-- AUTHOR   : Tomas Stucinskas a.k.a Baboon -->
+<!-- EMAIL    : baboon@ai-hq.com              -->
+
+
+<p class="title">Search Player</p>
+
+<table border="0" cellspacing="0" cellpadding="3">
+  <tr class="tableheader">
+    <td width="15">&nbsp;</td>
+    <td width="40">Rank</td>
+    <td width="100">Player Name</td>
+ </tr>
+  <loop name="players">
+    <tr class="{players.class}">
+      <td>{players.num}</td>
+      <td><img src="{base}{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></td>
+      <td><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+    </tr>
+  </loop name="players">
+</table>
+
+<div style="visibility:hidden; font-size:xx-small;">templates/search.htm 1.0.0</div>

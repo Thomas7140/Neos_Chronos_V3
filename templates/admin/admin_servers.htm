@@ -1,0 +1,77 @@
+<!-- TEMPLATE  : 'ADMIN/SERVERS'                -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL     : azrael@tdosquad.co.uk          -->
+<!-- FINALIZED : 30th APRIL 2005                -->
+
+
+<!-- MAIN BLOCK --> 
+<block name="main">
+  
+  <p class="title">Servers Admin</p>
+
+  <form method="post" action="{adminaction}">
+    <table cellspacing="0" cellpadding="3" border="0">
+      <tr class="tableheader">
+        <td>&nbsp;</td>
+        <td width="100"><div align="left">Server Name</div></td>
+        <td><div align="center">ID Code</div></td>
+        <td>&nbsp;</td>
+      </tr>
+      <loop name="server">
+      <tr class="{server.class}">
+        <td><input type="checkbox" name="checkbox[]" value="{server.id}"></td>
+          <input type="hidden" name="sv{server.id}[]" value="{server.id}">
+        <td><div align="left"><input type="text" size="16" name="sv{server.id}[]" value="{server.name}"></div></td>
+        <td><div align="center"><input name="sv{server.id}[]" type="text" value="{server.serverid}" size="7"></div></td>
+        <td>&nbsp;</td>
+      </tr>
+      </loop name="server">
+    </table>
+    
+	<br>
+    <br>
+
+    <table width="700">
+      <tr>
+        <td width="263" valign="top"><div align="center">
+          <table width="170" >
+            <tr>
+              <td class="tableheader"><div align="center">Options</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td><div align="center"><input name="delete_selected_servers" type="submit" id="delete_selected_servers" value="Delete Selected Servers" style="padding-left:5px; text-align:left; width:125px"></div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td><div align="center"><input name="edit_selected_servers" type="submit" id="edit_selected_servers" value="Edit Selected Servers" style="padding-left:5px; text-align:left; width:125px"></div></td>
+            </tr>
+          </table>
+        </div></td>
+        <td width="100">&nbsp;</td>
+        <td width="321">
+		  <table width="78%">
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Add new server </div></td>
+            </tr>
+            <tr class="tablerow2">
+              <td width="43%"><input type="hidden" name="id" value="{id}">Server Name:</td>
+              <td width="57%"><input name="add_name" type="text" id="add_name" value="" size="16"></td>
+            </tr>
+            <tr class="tablerow1">
+              <td>Server ID Code:</td>
+              <td><input name="add_serverid" type="text" id="add_serverid" value="" size="16"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>&nbsp;</td>
+              <td><input name="add_server" type="submit" id="add_server" value="Add Server"></td>
+            </tr>
+          </table>
+		</td>
+      </tr>
+    </table>
+  </form>
+  
+  <br>
+  <br>
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_servers.htm 1.0.0</div>

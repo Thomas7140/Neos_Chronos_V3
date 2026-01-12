@@ -1,0 +1,33 @@
+
+<block name="main">
+  <p class="title">Servers</p>
+  <table class="table table-striped table-hover table-bordered" style="width:60%; min-width:340px;">
+    <tr class="tableheader">
+      <td width="100">Status</td>
+      <td width="100">Game Name</td>
+      <td width="120">Map Name</td>
+      <td width="80">Game Type</td>
+      <td width="50">Players</td>
+      <td width="65">Dedicated</td>
+      <td width="80">Game</td>
+    </tr>
+    <loop name="servers">
+    <tr class="{servers.class}">
+      <td valign="middle" style="text-align:center; vertical-align:middle;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; height:32px;">
+          <img src="{base}templates/{servers.status}.gif" border="0" alt="{servers.status}" title="{servers.status}" style="vertical-align:middle; margin-right:6px;">
+        </span>
+      </td>
+        <td>{servers.server_name}</td>
+        <td>{servers.map_name}</td>
+        <td>{servers.game_type}</td>
+        <td>{servers.players}</td>
+        <td>{servers.dedicated}</td>
+        <td>{servers.game}</td>
+    </tr>
+    </loop name="servers">
+  </table>
+</block name="main">
+
+
+<div style="visibility:hidden; font-size:xx-small;">templates/servers.htm 1.0.0</div>

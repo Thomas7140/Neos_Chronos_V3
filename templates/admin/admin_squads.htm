@@ -1,0 +1,151 @@
+<!-- TEMPLATE  : 'ADMIN/SQUADS'                 -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL     : azrael@tdosquad.co.uk          -->
+<!-- FINALIZED : 1st May 2005                   -->
+
+<!-- MAIN BLOCK --> 
+<block name="main">
+  <p class="title">Squads Admin</p>
+  
+  <form name="form1" method="post" action="{adminaction}">
+    <table>
+      <tr class="tableheader">
+        <td>&nbsp;</td>
+        <td width="150">Squad - Click to Edit</td>
+        <td width="30"><div align="center">Tag</div></td>
+        <td width="30"><div align="center">Url</div></td>
+        <td width="30"><div align="center">Members</div></td>
+      </tr>
+      <loop name="squads">
+      <tr class="{squads.class}">
+        <td><input type="checkbox" name="checkbox[]" value="{squads.id}"></td>
+        <td><a href="{mainscript}action=admin_squad_edit&id={squads.id}">{squads.name}</a></td>
+        <td><div align="center"><span class="{squads.tg_class}">{squads.tag}</span></div></td>
+        <td><div align="center"><span class="{squads.ur_class}">{squads.url}</span></div></td>
+        <td><div align="center">{squads.mem}</div></td>
+      </tr>
+      </loop name="squads">
+    </table>
+    <br>
+    <table width="700">
+      <tr>
+        <td width="263" valign="top"><div align="right">
+          <table width="57%" >
+            <tr>
+              <td class="tableheader"><div align="center">Options</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td><div align="center">
+                <input name="delete_squads" type="submit" id="delete_squads" style="padding-left:5; text-align:left; width:110" value="Delete Selected">
+              </div></td>
+            </tr>
+            <tr class="tablerow2">
+              <td><div align="center">
+                <input name="reset_squads" type="submit" id="reset_squads" style="padding-left:5; text-align:left; width:110" value="Reset Selected">
+              </div></td>
+            </tr>
+          </table>
+        </div></td>
+        <td width="100">&nbsp;</td>
+        <td width="321">
+		  <table width="78%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Add new squad </div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td width="43%">Name:</td>
+              <td width="57%"><input name="sqname" type="text" id="sqname" size="20"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>Tag:</td>
+              <td><input name="tag" type="text" id="tag" size="16"></td>
+            </tr>
+            <tr class="tablerow1">
+              <td>Website:</td>
+              <td><input name="url" type="text" id="url" size="30"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>&nbsp;</td>
+              <td><input name="add_squad" type="submit" id="add_squad" value="Add Squad"></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </form>
+</block name="main">
+
+
+<!-- SQUAD DETAILS BLOCK -->
+<block name="squad_details">
+  <p class="title">Squads Admin</p>
+
+	<form name="form1" method="post" action="{adminaction}&id={id}">  
+		<table width="240">
+			<tr class="tableheader">
+			    <td colspan="2"><div align="center">Squad Details </div></td>
+			</tr>
+			<tr class="tablerow1">
+			    <td width="114"><div align="right"></div></td>
+			    <td width="114"><div align="center"></div></td>
+			</tr>
+			<tr class="tablerow2">
+			    <td><div align="right">Squad Name:</div></td>
+			    <td><div align="center"><input name="sqname" type="text" id="sqname" style="text-align:center" value="{name}" size="16">
+			    </div></td>
+			</tr>
+			<tr class="tablerow2">
+			    <td><div align="right">Squad Site:</div></td>
+			    <td><div align="center"><input type="text" size="20" name="url" value="{url}" style="text-align:center"></div></td>
+			</tr>
+			<tr class="tablerow1">
+			    <td><div align="right">Squad Tag:</div></td>
+			    <td><div align="center"><input type="text" size="10" name="tag" value="{tag}" style="text-align:center"></div></td>
+			</tr>
+			<tr class="tablerow2">
+			    <td><div align="right">Members:</div></td>
+			    <td><div align="center">{mem}</div></td>
+			</tr>
+			<tr class="tablerow2">
+			    <td colspan="2"><div align="center"><input name="edit_squad" type="submit" id="edit_squad" value="Edit Details"></div></td>
+			</tr>
+		</table>
+	</form>
+	
+	<form name="form1" method="post" action="{adminaction}">
+		<table>
+			<tr>
+			    <td>&nbsp;</td>
+			    <td>&nbsp;</td>
+			    <td class="tablerow2" colspan="3"><div align="center">Overall</div></td>
+			    <td class="tablerow2" colspan="3"><div align="center">This Month</div></td>
+			</tr>
+			<tr class="tableheader">
+			    <td>&nbsp;</td>
+			    <td width="150">Squad</td>
+			    <td width="30"><div align="right">Kills</div></td>
+			    <td width="30"><div align="right">Deaths</div></td>
+			    <td width="30"><div align="right">Ratio</div></td>
+			    <td width="30"><div align="right">Kills</div></td>
+			    <td width="30"><div align="right">Deaths</div></td>
+			    <td width="30"><div align="right">Ratio</div></td>
+			</tr>
+			<loop name="players">
+			<tr class="{players.class}">
+			    <td><input type="checkbox" name="checkbox[]" value="{players.id}"></td>
+			    <td>{players.name}</td>
+			    <td><div align="right">{players.kills}</div></td>
+			    <td><div align="right">{players.deaths}</div></td>
+			    <td><div align="right"><span class="{players.r_class}">{players.ratio}</span></div></td>
+			    <td><div align="right">{players.mkills}</div></td>
+			    <td><div align="right">{players.mdeaths}</div></td>
+			    <td><div align="right"><span class="{players.mr_class}">{players.mratio}</span></div></td>
+			</tr>
+			</loop name="players">
+		</table>
+		<br>
+		<input name="delete_squ_players" type="submit" id="delete_squ_players" value="Delete Player(s)">
+	</form>
+</block name="squad_details">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_squads.htm 1.0.0</div>

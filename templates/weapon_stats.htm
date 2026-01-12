@@ -1,0 +1,143 @@
+<!-- TEMPLATE     : 'WEAPON STATS'                  -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 3rd May 2005                    -->
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">Weapon Stats</p>
+
+  <form method="post" action="{formurl}">
+    Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+  <table>
+    <tr class="tableheader">
+      <td width="15">&nbsp;</td>
+      <td class="{name}" colspan="2"><a href="{name_sort}">Weapon </a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+      <td class="{kills}" width="50"><div align="right"><a href="{kills_sort}">Kills</a>&nbsp;<img src="{base}templates/{kills}.gif" border="0"></div></td>
+      <td class="{avg_kills}" width="60"><div align="right"><a href="{avg_kills_sort}">Kills/Min</a>&nbsp;<img src="{base}templates/{avg_kills}.gif" border="0"></div></td>
+      <td class="{accuracy}" width="60"><div align="right"><a href="{accuracy_sort}">Accuracy</a>&nbsp;<img src="{base}templates/{accuracy}.gif" border="0"></div></td>
+      <td class="{time}" width="70"><div align="right"><a href="{time_sort}">Time Used</a>&nbsp;<img src="{base}templates/{time}.gif" border="0"></div></td>
+      <td width="120"><div align="center">Usage Statistics</div></td>
+      <td width="70"><div align="center">500 + Kills</div></td>
+    </tr>
+    <loop name="weapons">
+      <tr class="{weapons.class}" height="32">
+        <td><div align="right">{weapons.num}</div></td>
+        <td align="center"><img src="{base}{weapons.image}" border="0"></td>
+        <td><a href="{mainscript}action=weapon_details&id={weapons.id}">{weapons.name}</a></td>
+        <td><div align="right">{weapons.kills}</div></td>
+        <td><div align="right">{weapons.avg_kills}</div></td>
+
+        <td><div align="right">{weapons.accuracy} %</div></td>
+        <td><div align="right">{weapons.time}</div></td>
+        <td valign="middle"><div align="left"><img src="{base}templates/green_bar.gif" border="1" width="{weapons.usage_bar_len}" height="13">&nbsp;&nbsp;<small>{weapons.usage_percent} %</small></div></td>
+        <td><div align="right">{weapons.mastered}</div></td>
+      </tr>
+    </loop name="weapons">
+  </table>
+
+</block name="main">
+
+<!-- WEAPON DETAILS BLOCK -->
+<block name="weapon_details">
+  <p class="title">Weapon Details for {name}</p>
+
+  <form method="post" action="{formurl}">
+    &nbsp;&nbsp;Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+
+  <table>
+    <tr>
+      <td valign="top" align="left">
+     
+        <table>
+          <tr class="tableheader">
+            <td width="80">Weapon Stats</td>
+            <td width="60">Total</td>
+            <td width="70">Per Minute</td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Kills</td>
+            <td>{kills}</td>
+            <td>{avg_kills}</td>
+          </tr>
+          <tr class="tablerow2">
+            <td>Time Used</td>
+            <td>{time}</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr class="tablerow1">
+            <td>Accuracy</td>
+            <td>{accuracy} %</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      
+      </td>
+      <td valign="top" align="right">
+    
+        <table width="160">
+          <tr class="tableheader"><td>Weapon Image</td></tr>
+          <tr class="tablerow1"><td align="center"><img src="{base}{image}" border="0"></td></tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <table width="400">
+    <tr class="tableheader">
+      <td width="150" colspan="3">Players That Used Most</td>
+      <td width="40"><div align="center">Kills</div></td>
+      <td width="60"><div align="center">Kills/Min</div></td>
+      <td width="60"><div align="center">Accuracy</div></td>
+      <td width="75"><div align="center">Time Used</div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td width="15"><div align="right">{players.num}</div></td>
+        <td width="40"><div align="center"><img src="{base}{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td width="100"><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.kills}</div></td>
+        <td><div align="right">{players.avg_kills}</div></td>
+        <td><div align="right">{players.accuracy} %</div></td>
+        <td><div align="right">{players.time}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="weapon_details">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/weapon_stats.htm 1.0.0</div>

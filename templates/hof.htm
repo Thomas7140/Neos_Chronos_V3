@@ -1,0 +1,43 @@
+<!-- TEMPLATE     : 'HOF'                           -->
+<!-- AUTHOR       : Peter Jones a.k.a »TÐÖ« Ãzràél  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 8th May 2005                    -->
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  <p class="title">HOF</p>
+
+  {entries}
+  <br>
+  <br>
+  
+  <table>
+    <tr class="tableheader">
+      <td width="150" colspan="3">Players</td>
+      <td width="40"><div align="center">Rating pts </div></td>
+      <td width="40"><div align="center">Games Played</div></td>
+      <td width="40"><div align="center">Games Won </div></td>
+      <td width="60"><div align="center">Time Played</div></td>
+      <td width="70"><div align="center">Awards</div></td>
+      <td width="50"><div align="center">Weapon Awards </div></td>
+      <td width="60"><div align="center">Kills</div></td>
+    </tr>
+    <loop name="players">
+      <tr class="{players.class}">
+        <td width="10"><div align="right">{players.num}</div></td>
+        <td width="40"><div align="center"><img src="{base}{players.rank_thumbnail}" border="0" alt="{players.rank_name}, Rating: {players.rating}"></div></td>
+        <td width="100"><a href="{mainscript}action=player_stats&id={players.id}">{players.name}</a></td>
+        <td><div align="right">{players.rating}</div></td>
+        <td><div align="right">{players.games}</div></td>
+        <td><div align="right"><span class="{players.mpr_class}">{players.wins}</span></div></td>
+        <td><div align="right">{players.time}</div></td>
+        <td><div align="right">{players.awards}</div></td>
+        <td><div align="right">{players.wpn_awards}</div></td>
+        <td><div align="right">{players.kills}</div></td>
+      </tr>
+    </loop name="players">
+  </table>
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/hof.htm 1.0.0</div>

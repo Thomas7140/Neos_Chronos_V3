@@ -1,0 +1,198 @@
+<!-- TEMPLATE  : 'ADMIN/MAPS'                   -->
+<!-- AUTHOR    : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL     : azrael@tdosquad.co.uk          -->
+<!-- FINALIZED : 30th APRIL 2005                -->
+
+
+<!-- MAIN BLOCK -->
+<block name="main">
+  
+  <p class="title">Maps Admin</p>
+
+  <form method="post" action="{formurl}">
+    Server&nbsp;
+    <select name="server">
+      <loop name="servers">
+        <option value="{servers.id}" {servers.selected}>{servers.name}</option>
+      </loop name="servers">
+    </select>
+    &nbsp;&nbsp;Game Type&nbsp;
+    <select name="gametype">
+      <loop name="gametypes">
+        <option value="{gametypes.name}" {gametypes.selected}>{gametypes.name}</option>
+      </loop name="gametypes">
+    </select>
+    &nbsp;&nbsp;
+    <input type="submit" name="formsubmit" value="GO">
+  </form>
+ 
+  <p class="multipage">{multipage}</p>
+
+  <form method="post" action="{adminaction}">
+    <table border="0" cellspacing="0" cellpadding="3">
+      <colgroup>
+        <col style="width:32px;">
+        <col style="width:32px;">
+        <col>
+        <col style="width:90px;">
+        <col style="width:120px;">
+        <col style="width:90px;">
+        <col style="width:90px;">
+      </colgroup>
+      <tr class="tableheader">
+        <td>&nbsp;</td>
+        <td class="{name}">&nbsp;</td>
+        <td class="{name}"><a href="{name_sort}">Map Name</a>&nbsp;<img src="{base}templates/{name}.gif" border="0"></td>
+        <td class="{hosted}"><a href="{hosted_sort}">Hosted<span class="{name}"><img src="{base}templates/{hosted}.gif" border="0"></span></a></td>
+        <td class="{last_played}"><div align="center"><a href="{last_played_sort}">Last Played<span class="{last_played}"><img src="{base}templates/{last_played}.gif" border="0"></span></a></div></td>
+        <td class="{lpic}">Large Pic</td>
+        <td class="{thumb}">Thumbnail</td>
+      </tr>
+      <loop name="maps">
+      <tr class="{maps.class}">
+        <td>{maps.num}</td>
+        <td><input name="checkbox[]" type="checkbox" value="{maps.id}"></td>
+        <td><a href="{mainscript}action=admin_maps_stats&id={maps.id}">{maps.name}</a></td>
+        <td><div align="center">{maps.hosted}</div></td>
+        <td><div align="center">{maps.last_played}</div></td>
+        <td><div align="center"><span class="{maps.lp_class}">{maps.lpic}</span></div></td>
+        <td><div align="center"><span class="{maps.tn_class}">{maps.thumb}</span></div></td>
+      </tr>
+      </loop name="maps">
+    </table>
+	
+    <br>
+    <br>
+	
+    <table width="250">
+      <tr>
+        <td colspan="2" class="tableheader"><div align="center">Options</div></td>
+      </tr>
+      <tr>
+        <td width="120" class="tablerow2">Delete selected maps:</td>
+        <td width="118" class="tablerow1"><div align="center"><input name="delete_selected_maps" type="submit" value="Delete Maps"></div></td>
+      </tr>
+    </table>
+  </form>
+
+  <p class="multipage">{multipage}</p>
+</block name="main">
+
+
+<!-- MAPS STATS BLOCK --> 
+<block name="maps_stats">
+  
+  <p class="title">Maps Admin</p>
+ 
+    <table width="300">
+      <tr>
+        <td width="240">
+          <table width="240">
+            <tr class="tableheader">
+              <td colspan="2"><div align="center">Map Details</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td width="114"></td>
+              <td width="114"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td><div align="right">Map Name:</div></td>
+              <td><div align="center">{name}</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td><div align="right">Hosted:</div></td>
+              <td><div align="center">{hosted}</div></td>
+            </tr>
+            <tr class="tablerow2">
+              <td><div align="right">Time Played:</div></td>
+              <td><div align="center">{time}</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td><div align="right">Last Played:</div></td>
+             <td><div align="center">{last_played}</div></td>
+            </tr>
+            <tr class="tablerow2">
+              <td><div align="right">Kills:</div></td>
+              <td><div align="center">{kills}</div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td><div align="right">Deaths:</div></td>
+              <td><div align="center">{deaths}</div></td>
+            </tr>
+            <tr class="tablerow2">
+              <td><div align="right">Thumbnail:</div></td>
+              <td><div align="center"><img src="modules/{module_name}/{thumbnail}" border="1"></div></td>
+            </tr>
+          </table>
+        </td>
+        <td width="48"><div align="center"><img src="modules/{module_name}/{image}" border="1"></div></td>
+      </tr>
+    </table>
+	
+	<br>
+	<Br>
+	 
+    <form method="post" action="{adminaction}" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td width="220"><div align="center">
+            <table>
+              <tr>
+                <td colspan="2" class="tableheader"><div align="center">Options</div></td>
+              </tr>
+              <tr>
+                <td width="90" class="tablerow2">Delete map:</td>
+                <td class="tablerow1"><div align="left"><input name="delete_map" type="submit" id="delete_map" value="Delete" style="padding-left:5px; text-align:left; width:80px"></div></td>
+              </tr>
+              <tr>
+                <td class="tablerow2">Reset maps stats:</td>
+                <td class="tablerow1"><div align="left"><input name="reset_map" type="submit" id="reset_map" value="Reset" style="padding-left:5px; text-align:left; width:80px"></div></td>
+			  </tr>
+              <tr>
+                <td class="tablerow2">Delete Image:</td>
+                <td class="tablerow1"><div align="left"><input name="delete_map_image" type="submit" id="delete_map_image" value="Delete Image" style="padding-left:5px; text-align:left; width:80px"></div></td>
+			  </tr>
+              <tr>
+                <td class="tablerow2">Delete Thumbnail:</td>
+                <td class="tablerow1"><div align="left"><input name="delete_map_thumbnail" type="submit" id="delete_map_thumbnail" value="Delete Thumb" style="padding-left:5px; text-align:left; width:80px"></div></td>
+			  </tr>
+            </table>
+          </div></td>
+          <td width="180" valign="top"><div align="center">
+            <table>
+              <tr>
+                <td colspan="2" class="tableheader"><div align="center">Upload Image</div></td>
+              </tr>
+              <tr>
+                <td width="100" class="tablerow2"><input type="file" name="uploadedimagefile"></td>
+              </tr>
+              <tr>
+                <td class="tablerow1"><div align="center">
+                <input name="id" type="hidden" id="id" value="{id}">
+                <input name="upload_image" type="submit" id="upload_image" value="Upload">
+                </div></td>
+              </tr>
+            </table>
+          </div></td>
+          <td width="180" valign="top"><div align="center">
+            <table>
+              <tr>
+                <td colspan="2" class="tableheader"><div align="center">Upload Thumbnail </div></td>
+              </tr>
+              <tr>
+                <td width="100" class="tablerow2"><input type="file" name="uploadedthumbfile"></td>
+              </tr>
+              <tr>
+                <td class="tablerow1"><div align="center">
+                <input name="id" type="hidden" id="id" value="{id}">
+                <input name="upload_thumbnail" type="submit" id="upload_thumbnail" value="Upload">
+                </div></td>
+              </tr>
+            </table>
+          </div></td>
+        </tr>
+      </table>
+    </form>
+</block name="maps_stats">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_maps.htm 1.0.0</div>

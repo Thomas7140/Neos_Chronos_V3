@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>BAB.stats Chronos Uploader Manual</title>
+<style type="text/css">
+body {background-color: #000000;scrollbar-3d-light-color : #000000;scrollbar-arrow-color : #DDDDDD;
+scrollbar-base-color : #DDDDDD;scrollbar-dark-shadow-color : #000000;scrollbar-face-color : #000000;
+scrollbar-highlight-color : #000000;scrollbar-shadow-color : #DDDDDD;}
+a {color: #BBCCDD;text-decoration: none;}
+a:hover {text-decoration: underline;color: #EEEEEE;}
+h1 {color: #EEEEEE;font-family: Verdana, Tahoma, Arial;font-weight: bold;font-size: 18px;text-align: center;}
+h2 {color: #EEEEEE;font-family: Verdana, Tahoma, Arial;font-weight: bold;font-size: 15px;}
+h3 {color: #EEEEEE;font-family: Verdana, Tahoma, Arial;font-weight: bold;font-size: 13px;}
+p {color: #BBBBBB;font-family: Verdana, Tahoma, Arial;font-weight: normal;font-size: 11px;text-align: justify;}
+.comment {color: silver;font-family: Verdana, Tahoma, Arial;font-weight: normal;font-size: 10px;}
+</style>
+</head>
+<body>
+<table width="700" border="0" cellspacing="0" cellpadding="5" align="center">
+<tr>
+<td>
+
+<h1>BAB.stats Chronos Frequently Asked Questions</h1>
+
+<h3>FTP or HTTP Upload - which one to use?</h3>
+<dir>
+<p>
+I personally recommend to use HTTP, especially if you are a novice user. HTTP is easier to set up, as you only need to know the URL address of your stats page. It is faster and more efficient - stats are imported and available on the stats page the same moment they are sent. Also, if you run a stats network and want other people or squads to upload their scores to your webserver, you do not need to give them your FTP login details, only URL to the stats page and their Server Identification Code. HTTP Upload should also be prefered by the people who have installed stats on Microsoft webservers (IIS, PWS), as CHMOD is unavailable on these. 
+</p>
+</dir>
+<h3>I use FTP Upload, and stats are not updated anymore</h3>
+<dir>
+<p>
+First of all, check if all your settings are correct, especially the Server Identification Code. If you are sure everything is correct, or you did not modify anything for some time and it just stopped working, read below.
+</p> 
+<p>
+Try to CHMOD 'upload' folder to 777, and then refresh the start page of the stats several times and this should be fixed. However, on some systems CHMOD is unavailable, so, to fix the problem, you need to do the following:
+</p>
+<dir>
+<p>
+1. Login to your FTP and navigate to 'upload' folder.<br>
+2. Open the start page of your stats site.<br>
+3. From 'upload', delete first 10 files.<br>
+4. Click 'Refresh' in the browser and wait till the page fully loads.<br>
+5. Delete 10 first files from 'upload'.<br>
+6. Repeat steps 4-5 until there are no any files in 'upload'.<br>
+</p>
+</dir>
+<p>
+CHMOD'ing 'upload' to 777 lets the stats script delete files from that folder, but as CHMOD is unavailable, uploaded files allways stay there, and sooner or later import script is unable to check and import all those files, thats why stats are not updated. Thus I recommend using HTTP upload whenever you can. If, for some reason, you cant use HTTP, and CHMOD is unavailable aswell, the only option is to delete the stats files from 'upload' manually using FTP client. I recommend to do that daily.
+</p>
+</dir>
+
+<h3>I get this error: <i>Warning: readdir(): supplied argument is not a valid Directory resource</i></h3>
+<dir>
+<p>
+It means "upload" or "maps" folders are missing where BAB.stats Server is installed. Simply create them and CHMOD to 777 with your FTP client.
+</p>
+</dir>
+
+<h3>What is PHP/MySQL and how do I know if my webhost supports them?</h3>
+<dir>
+<p>
+PHP is a programming language, BAB.stats Server is entirely written in PHP. In order to run the Server, your webhost must support PHP. To find that out you must simply browse the website of your webhost and check if they offer PHP support. If you are signing up for a free hosting account, this information will be provided to you during registration process. 
+</p>
+<p>
+MySQL is a database engine, BAB.stats Server uses it to store all the data on players, weapons, maps and so on. Again, in order to run BAB.stats, your webhost must support MySQL. To find out if it does you must do the same as with PHP - browse the website of your webhost, or ask them directly by eMail.
+</p>
+</dir>
+
+<h3>What are my database settings in config.php?</h3>
+<dir>
+<p>
+I don't know :) You must get this information from your webhost. If you have signed up a free hosting account, this information might be in the email they sent to you after you registered, together with FTP account information. You may, aswell, find this information by loggin in to your account on webhost's website.
+</p>
+</dir>
+
+<h3>What is Server Identification Code and where do I get one?</h3>
+<dir>
+<p>
+Stats page must know for which game server stats were uploaded, and that is the main purpose of Server Identification Code. Lets say, there are 5 Uploaders sending stats to the same stats page. When the stats page receives all the data, it check Server Identification Code, then checks if there is a server with the same identification code in database, and if there is, it adds stats to database. So you must add the server in administration panel of stats page before uploading any stats. Every of those 5 Uploaders must use a different identification code. The identification code can be anything you want, but there are a few limitations - only letters and numerical characters can be used, and it must allways start with the letter, no spaces allowed! 
+</p>
+<p>
+If you still don't know what your Server Identification Code is, then do this:
+</p>
+<dir>
+<p>
+1. Open any page in the vocabulary.<br>
+2. Choose the word you like best.<br>
+3. Go to Stats Administration Panel in your stats page.<br>
+4. Login, then click "Servers".<br>
+5. Add the server with the same Server Identification Code as the word you chose.<br>
+6. Open the Uploader, click "EditConfig".<br>
+7. Where is says "Server identification code", write the word you chose.<br>
+8. Chick "Save" and close configuration window.<br><br>
+</p>
+</dir>
+<p>
+This should work.
+</p>
+</dir>
+
+<h3>I updated the game, and the Uploader doesn't track stats anymore</h3>
+<dir>
+<p>
+The Uploader can work only with one version of the game at a time. When new update of the game comes out, the Uploader needs to be updated too. To find out for what version of the game the Uploader was designed, you must launch it and it will say "Tracking stats for game: ...". There you will see the game name and version number. The Uploader will not work with any other version, so you must head to BAB.stats website and download the updated Uploader. The update is usually released 2-3 days after the game is updated.
+</p>
+</dir>
+
+<h3>Can you install stats for me?</h3>
+<dir>
+<p>
+No.
+</p>
+</dir>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

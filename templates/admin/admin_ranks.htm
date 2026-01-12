@@ -1,0 +1,104 @@
+<!-- TEMPLATE     : 'ADMIN/RANKS'                  -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon  -->
+<!-- EMAIL        : baboon@ai-hq.com               -->
+<!-- Modified by  : Peter Jones a.k.a »TÐÖ« Ãzràél -->
+<!-- EMAIL        : azrael@tdosquad.co.uk          -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk      -->
+<!-- FINALIZED    : 1st May 2005                   -->
+
+
+<!-- MAIN BLOCK --> 
+<block name="main">
+  <p class="title">Ranks Admin</p>
+  
+  <form name="form1" method="post" action="{adminaction}">
+    <table width="500" class="title">
+      <tr>
+        <td width="20">&nbsp;</td>
+        <td width="45">&nbsp;</td>
+        <td width="150">Name</td>
+        <td width="60">Rating</td>
+        <td width="73">Image</td>
+        <td width="124">Thumbnail</td>
+      </tr>
+	  <loop name="ranks">
+      <tr class="{ranks.class}">
+        <td><div align="center">
+          <input type="checkbox" name="checkbox[]" value="{ranks.id}"{ranks.opt}>
+        </div></td>
+        <td><div align="center"><img src="{base}{ranks.image}" alt="{ranks.thumbnail}" width="40" height="25" border="0"></div></td>
+            <input name="rk{ranks.id}[]" type="hidden" id="rk{ranks.id}[]" value="{ranks.id}">
+		<td><input name="rk{ranks.id}[]" type="text" id="rk{ranks.id}[]" value="{ranks.name}" size="25"></td>
+        <td><input name="rk{ranks.id}[]" type="text" id="rk{ranks.id}[]" value="{ranks.rating}" size="8"></td>
+        <td><input name="rk{ranks.id}[]" type="text" id="rk{ranks.id}[]" value="{ranks.image}" size="10"></td>
+        <td><input name="rk{ranks.id}[]" type="text" id="rk{ranks.id}[]" value="{ranks.thumbnail}" size="20"></td>
+      </tr>
+	  </loop name="ranks">
+    </table>
+	<br>
+	<br>
+	<br>
+    <table width="700">
+      <tr>
+        <td width="263" valign="top"><div align="right">
+            <table width="57%" >
+              <tr>
+                <td class="tableheader"><div align="center">Options</div></td>
+              </tr>
+              <tr class="tablerow1">
+                <td><div align="center">
+                  <input name="select_ranks" type="submit" id="select_ranks" value="Select All Ranks" style="padding-left:5px; text-align:left; width:115px">
+                </div></td>
+              </tr>
+              <tr class="tablerow2">
+                <td><div align="center">
+                  <input name="deselect_ranks" type="submit" id="deselect_ranks" value="Deselect All Ranks" style="padding-left:5px; text-align:left; width:115px">
+                </div></td>
+              </tr>
+              <tr class="tablerow1">
+                <td><div align="center">
+                  <input name="update_ranks" type="submit" id="update_ranks" value="Update Selected" style="padding-left:5px; text-align:left; width:115px">
+                </div></td>
+              </tr>
+              <tr class="tablerow2">
+                <td><div align="center">
+                  <input name="delete_selected_ranks" type="submit" id="delete_selected_ranks" value="Delete Selected" style="padding-left:5px; text-align:left; width:115px">
+                </div></td>
+              </tr>
+            </table>
+        </div></td>
+        <td width="100">&nbsp;</td>
+        <td width="321"><table width="78%" >
+            <tr>
+              <td colspan="2" class="tableheader"><div align="center">Add new rank </div></td>
+            </tr>
+            <tr class="tablerow1">
+              <td width="43%"><input type="hidden" name="id" value="{id}">
+            Name:</td>
+              <td width="57%"><input name="add_name" type="text" id="add_name" value="" size="16"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>Rating:</td>
+              <td><input name="add_rating" type="text" id="add_rating" value="" size="16"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>Image:</td>
+              <td><input name="add_image" type="text" id="add_image" value="ranks/" size="16"></td>
+            </tr>
+            <tr class="tablerow1">
+              <td>Thumbnail:</td>
+              <td><input name="add_thumbnail" type="text" id="add_thumbnail" value="ranks/thumbs/" size="16"></td>
+            </tr>
+            <tr class="tablerow2">
+              <td>&nbsp;</td>
+              <td><input type="submit" name="add_rank" value="Add Rank"></td>
+            </tr>
+        </table></td>
+      </tr>
+    </table>
+  </form>
+  <br>
+  <br>
+</block name="main">
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_ranks.htm 1.0.0</div>

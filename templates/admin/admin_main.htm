@@ -1,0 +1,339 @@
+<!-- TEMPLATE     : 'ADMIN/MAIN'                    -->
+<!-- AUTHOR       : Tomas Stucinskas a.k.a Baboon   -->
+<!-- EMAIL        : baboon@ai-hq.com                -->
+<!-- Modified by  : Peter Jones a.k.a ?T?? ?zr??l  -->
+<!-- EMAIL        : azrael@tdosquad.co.uk           -->
+<!-- WEBSITE      : http://www.tdosquad.co.uk       -->
+<!-- FINALIZED    : 27th April 2005                 -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="{charset}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Tomas Stucinskas a.k.a Baboon">
+    <title>{website_title} - Neos Chronos Admin</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      :root {
+        --bg: #0b0e14;
+        --surface: #141a24;
+        --surface-2: #1c2432;
+        --accent: #f3a74c;
+        --accent-2: #4bc6a8;
+        --text: #e9eef5;
+        --muted: #98a3b3;
+        --border: #2a3343;
+      }
+
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: "Sora", "Trebuchet MS", Arial, sans-serif;
+        background: radial-gradient(1200px circle at -10% 0%, #1d2536 0%, rgba(13, 16, 22, 0) 45%),
+                    radial-gradient(900px circle at 100% 10%, #2b1e12 0%, rgba(13, 16, 22, 0) 50%),
+                    var(--bg);
+      }
+
+      .admin-shell {
+        min-height: 100vh;
+      }
+
+      .admin-shell.is-blurred {
+        filter: blur(4px);
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .admin-sidebar {
+        width: 270px;
+        background: linear-gradient(180deg, #141a24 0%, #0f141d 100%);
+        border-right: 1px solid var(--border);
+        padding: 22px 20px 18px;
+        gap: 12px;
+      }
+
+      .admin-brand {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .admin-subtitle {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .sidebar-meta {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: var(--muted);
+        line-height: 1.4;
+        letter-spacing: 0.08em;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .admin-nav .nav-link {
+        color: var(--text);
+        padding: 0.6rem 0.85rem;
+        border-radius: 12px;
+        margin-bottom: 0.35rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      .admin-nav .nav-link:hover {
+        color: var(--accent);
+        border-color: rgba(243, 167, 76, 0.35);
+        background: rgba(243, 167, 76, 0.1);
+      }
+
+      .sidebar-footer {
+        font-size: 0.8rem;
+        color: var(--muted);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .sidebar-version {
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .sidebar-footer input[type="submit"] {
+        width: 100%;
+        background: var(--surface-2);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 8px 10px;
+        transition: all 0.2s ease;
+      }
+
+      .sidebar-footer input[type="submit"]:hover {
+        background: rgba(243, 167, 76, 0.12);
+        border-color: rgba(243, 167, 76, 0.45);
+        color: var(--accent);
+      }
+
+      .sidebar-link {
+        color: var(--accent-2);
+        text-decoration: none;
+      }
+
+      .sidebar-link:hover {
+        color: #5fe0c0;
+      }
+
+      .admin-content {
+        padding: 26px 30px 30px;
+      }
+
+      .admin-topbar {
+        margin-bottom: 18px;
+      }
+
+      .topbar-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .topbar-actions form {
+        margin: 0;
+      }
+
+      .topbar-actions input[type="submit"] {
+        background: var(--surface-2);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 8px 12px;
+        transition: all 0.2s ease;
+      }
+
+      .topbar-actions input[type="submit"]:hover {
+        background: rgba(243, 167, 76, 0.12);
+        border-color: rgba(243, 167, 76, 0.45);
+        color: var(--accent);
+      }
+
+      .topbar-subtitle {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      .admin-badge {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .admin-frame-wrap {
+        width: 100%;
+      }
+
+      .admin-iframe {
+        width: 100%;
+        height: calc(100vh - 160px);
+        min-height: 520px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--surface);
+        box-shadow: 0 24px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .admin-overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(10, 12, 18, 0.75);
+        z-index: 9999;
+        backdrop-filter: blur(4px);
+      }
+
+      .admin-modal {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 360px;
+        transform: translate(-50%, -50%);
+        background-color: #171c26;
+        border: 1px solid var(--border);
+        padding: 18px;
+        color: var(--text);
+        border-radius: 14px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .admin-modal-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .admin-modal-error {
+        color: #ff9966;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
+      }
+
+      .admin-modal-success {
+        color: #28a745;
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 0.85rem;
+        border-radius: 4px;
+      }
+
+      .admin-modal label {
+        display: block;
+        margin-top: 8px;
+        font-size: 0.85rem;
+      }
+
+      .admin-modal input {
+        width: 100%;
+        box-sizing: border-box;
+        background: #11151e;
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 8px 10px;
+      }
+
+      .admin-modal-actions {
+        margin-top: 12px;
+        text-align: right;
+      }
+
+      .admin-modal-actions input {
+        width: auto;
+        background: var(--accent);
+        color: #1a140d;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 992px) {
+        .admin-shell {
+          flex-direction: column;
+        }
+
+        .admin-sidebar {
+          width: 100%;
+        }
+
+        .admin-iframe {
+          height: 70vh;
+          min-height: 420px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="admin-page" class="admin-shell d-flex {page_blur_class}">
+      <aside class="admin-sidebar d-flex flex-column">
+        <div class="sidebar-header">
+          <div class="admin-brand">{website_title}</div>
+        </div>
+        <nav class="nav flex-column admin-nav">
+          <a class="nav-link" href="{frame_script}action=admin_players" target="admin-frame">Players</a>
+          <a class="nav-link" href="{frame_script}action=admin_squads" target="admin-frame">Squads</a>
+          <a class="nav-link" href="{frame_script}action=admin_weapons" target="admin-frame">Weapons</a>
+          <a class="nav-link" href="{frame_script}action=admin_maps" target="admin-frame">Maps</a>
+          <a class="nav-link" href="{frame_script}action=admin_servers" target="admin-frame">Servers</a>
+          <a class="nav-link" href="{frame_script}action=admin_awards" target="admin-frame">Awards</a>
+          <a class="nav-link" href="{frame_script}action=admin_weapon_awards" target="admin-frame">Weapon Awards</a>
+          <a class="nav-link" href="{frame_script}action=admin_ranks" target="admin-frame">Ranks</a>
+          <a class="nav-link" href="{frame_script}action=admin_misc" target="admin-frame">Misc</a>
+        </nav>
+        <div class="sidebar-footer mt-auto">
+          <a class="sidebar-link" href="index.php">Back to stats</a>
+        </div>
+      </aside>
+      <main class="admin-content flex-grow-1">
+        <div class="admin-topbar d-flex flex-wrap justify-content-between align-items-center">
+          <div>
+            <div class="topbar-title">Admin Control Center</div>
+          </div>
+          <div class="topbar-actions">
+            {logout_form}
+          </div>
+        </div>
+        <div class="admin-frame-wrap">
+          <iframe name="admin-frame" class="admin-iframe" src="{iframe_src}" title="Admin content"></iframe>
+        </div>
+      </main>
+    </div>
+
+    {login_overlay}
+  </body>
+</html>
+
+<div style="visibility:hidden; font-size:xx-small;">templates/admin/admin_main.htm 1.0.0</div>
