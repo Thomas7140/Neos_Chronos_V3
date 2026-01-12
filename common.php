@@ -131,50 +131,56 @@ function GetRanking($id) {
   $id = (int) $id; // Sanitize input
   $i = 0; // Initialize counter
   $list = DBquery("SELECT $players_table.id FROM $players_table WHERE $players_table.rating > 0 GROUP BY $players_table.id ORDER BY rating DESC, name ASC");
-  while ($line = mysql_fetch_array($list, MYSQL_ASSOC)) {
-	$i++;
+  $ni = null;
+  foreach ($list as $line) {
+    $i++;
     foreach ($line as $col_value) {
-      if($col_value != $id){
-	    $ni = $i+1;
-	  } else {
-	    $st = array('','2','3','4','5','6','7','8','9','10');
-	    $nd = array('','2','3','4','5','6','7','8','9','10');
-	    $rd = array('','2','3','4','5','6','7','8','9','10');
-		$th = array('','1','2','3','4','5','6','7','8','9','10');
-		foreach($st as $value){
-	      switch ($ni) {
-            case $value.'1': $nni = $ni."st"; break;
-		  }
-	    }
-	    foreach($nd as $value){
-	      switch ($ni) {
-            case $value.'2': $nni = $ni."nd"; break;
-		  }
-	    }
-		foreach($rd as $value){
-	      switch ($ni) {
-            case $value.'3': $nni = $ni."rd"; break;
-		  }
-	    }
-		foreach($th as $value){
-	      switch ($ni) {
-            case $value.'0': $nni = $ni."th"; break;
-			case $value.'4': $nni = $ni."th"; break;
-			case $value.'5': $nni = $ni."th"; break;
-			case $value.'6': $nni = $ni."th"; break;
-			case $value.'7': $nni = $ni."th"; break;
-			case $value.'8': $nni = $ni."th"; break;
-			case $value.'9': $nni = $ni."th"; break;
-			case '1'.$value: $nni = $ni."th"; break;
-		  }
-	    }
-		switch ($ni) {
-           case 0 : $nni = "1st"; break;
-		  }
-	    return $nni;
-	  }
+      if ($col_value == $id) {
+        $ni = $i;
+        break 2;
+      }
     }
   }
+  if ($ni === null) {
+    // If not found, return null or a default value
+    return null;
+  }
+  $st = array('','2','3','4','5','6','7','8','9','10');
+  $nd = array('','2','3','4','5','6','7','8','9','10');
+  $rd = array('','2','3','4','5','6','7','8','9','10');
+  $th = array('','1','2','3','4','5','6','7','8','9','10');
+  $nni = $ni;
+  foreach($st as $value){
+    switch ($ni) {
+      case $value.'1': $nni = $ni."st"; break;
+    }
+  }
+  foreach($nd as $value){
+    switch ($ni) {
+      case $value.'2': $nni = $ni."nd"; break;
+    }
+  }
+  foreach($rd as $value){
+    switch ($ni) {
+      case $value.'3': $nni = $ni."rd"; break;
+    }
+  }
+  foreach($th as $value){
+    switch ($ni) {
+      case $value.'0': $nni = $ni."th"; break;
+      case $value.'4': $nni = $ni."th"; break;
+      case $value.'5': $nni = $ni."th"; break;
+      case $value.'6': $nni = $ni."th"; break;
+      case $value.'7': $nni = $ni."th"; break;
+      case $value.'8': $nni = $ni."th"; break;
+      case $value.'9': $nni = $ni."th"; break;
+      case '1'.$value: $nni = $ni."th"; break;
+    }
+  }
+  switch ($ni) {
+    case 0 : $nni = "1st"; break;
+  }
+  return $nni;
 }
 
 function GetMonthlyRanking($id) {
