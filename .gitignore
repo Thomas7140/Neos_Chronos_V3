@@ -1,0 +1,44 @@
+# Environment variables
+.env
+
+# Backups
+backups/*
+!backups/.gitkeep
+
+# Logs
+*.log
+logs/*
+!logs/.gitkeep
+
+# Cache
+cache/*
+!cache/.gitkeep
+
+# Temporary files
+tmp/*
+!tmp/.gitkeep
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Composer
+/vendor/
+
+# Node modules (if using any frontend build tools)
+node_modules/
+
+# Database backups
+*.sql.gz
+*.sql.zip
+
+# User uploads (if not version controlled)
+uploads/*
+!uploads/.gitkeep
