@@ -79,12 +79,24 @@ if ($step === 3 && $_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $db = Database::getInstance();
             
-            // Update default admin account
-            $hashedPassword = hashPassword($password);
-            $db->update(
-                "UPDATE " . TABLE_ADMIN . " SET username = ?, email = ?, password = ? WHERE id = 1",
-                [$username, $email, $hashedPassword]
-            );
+            // Check if admin already exists
+            $existingAdmin = $db->fetchOne("SELECT id FROM " . TABLE_ADMIN . " LIMIT 1");
+            
+            if ($existingAdmin) {
+                // Update existing admin
+                $hashedPassword = hashPassword($password);
+                $db->update(
+                    "UPDATE " . TABLE_ADMIN . " SET username = ?, email = ?, password = ? WHERE id = ?",
+                    [$username, $email, $hashedPassword, $existingAdmin['id']]
+                );
+            } else {
+                // Create new admin
+                $hashedPassword = hashPassword($password);
+                $db->insert(
+                    "INSERT INTO " . TABLE_ADMIN . " (username, email, password, is_active) VALUES (?, ?, ?, 1)",
+                    [$username, $email, $hashedPassword]
+                );
+            }
             
             $success[] = 'Admin account created successfully!';
             $step = 4;

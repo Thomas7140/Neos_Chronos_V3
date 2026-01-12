@@ -200,7 +200,5 @@ INSERT INTO `chronos_awards` (`award_name`, `award_description`, `award_icon`, `
 ('Killer', 'Awarded for 1000+ total kills', 'award_killer.png', 'kills', 'kills >= 1000'),
 ('Elite', 'Awarded for 5000+ rating', 'award_elite.png', 'rating', 'rating >= 5000');
 
--- Insert default admin user (password: admin123 - CHANGE THIS!)
--- Password hash for "admin123" using PASSWORD_ARGON2ID
-INSERT INTO `chronos_admin` (`username`, `password`, `email`) VALUES
-('admin', '$argon2id$v=19$m=65536,t=4,p=1$OEJaZ3dPWThiQWI5RjdaQw$gWXs1hLKLjL0e9VhqF5qF8+7FZxQBgC9j6vLUYqF1pU', 'admin@example.com');
+-- Note: Default admin user will be created during installation
+-- DO NOT use default passwords in production!

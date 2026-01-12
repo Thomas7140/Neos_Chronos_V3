@@ -27,6 +27,11 @@ $awards = $db->fetchAll(
      ORDER BY award_type, award_name"
 );
 
+// Define player_awards table constant if not already defined
+if (!defined('TABLE_PLAYER_AWARDS')) {
+    define('TABLE_PLAYER_AWARDS', DB_PREFIX . 'player_awards');
+}
+
 // Fetch top award earners
 $topAwardEarners = $db->fetchAll(
     "SELECT 
@@ -34,7 +39,7 @@ $topAwardEarners = $db->fetchAll(
         COUNT(DISTINCT pa.award_id) as awards_count,
         SUM(pa.times_earned) as total_awards
      FROM " . TABLE_PLAYERS . " p
-     INNER JOIN chronos_player_awards pa ON p.id = pa.player_id
+     INNER JOIN " . TABLE_PLAYER_AWARDS . " pa ON p.id = pa.player_id
      GROUP BY p.id, p.player_name
      ORDER BY awards_count DESC, total_awards DESC
      LIMIT 20"

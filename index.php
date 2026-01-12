@@ -102,16 +102,9 @@ $pageTitle = APP_NAME . ' - Player Statistics';
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="?page=players">Players</a></li>
                 <li><a href="modules/weapons/index.php">Weapons</a></li>
                 <li><a href="modules/maps/index.php">Maps</a></li>
                 <li><a href="modules/awards/index.php">Awards</a></li>
-                <?php if (ENABLE_MONTHLY_STATS): ?>
-                    <li><a href="?page=monthly">Monthly Stats</a></li>
-                <?php endif; ?>
-                <?php if (ENABLE_HALL_OF_FAME): ?>
-                    <li><a href="?page=hof">Hall of Fame</a></li>
-                <?php endif; ?>
                 <li><a href="admin/login.php">Admin</a></li>
             </ul>
         </nav>

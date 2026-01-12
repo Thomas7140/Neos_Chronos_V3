@@ -13,12 +13,14 @@ define('CHRONOS_INIT', true);
 require_once __DIR__ . '/../config.php';
 require_once INCLUDES_PATH . '/functions.php';
 
+// Load functions
+require_once INCLUDES_PATH . '/functions.php';
+
 // Start session
 session_start();
 
 // Log the logout
 if (isset($_SESSION['admin_username'])) {
-    require_once INCLUDES_PATH . '/functions.php';
     logMessage("Admin logout: {$_SESSION['admin_username']} from " . getClientIp(), 'INFO');
 }
 

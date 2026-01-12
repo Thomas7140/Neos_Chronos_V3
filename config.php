@@ -144,6 +144,7 @@ define('TABLE_PLAYERS', DB_PREFIX . 'players');
 define('TABLE_WEAPONS', DB_PREFIX . 'weapons');
 define('TABLE_MAPS', DB_PREFIX . 'maps');
 define('TABLE_AWARDS', DB_PREFIX . 'awards');
+define('TABLE_PLAYER_AWARDS', DB_PREFIX . 'player_awards');
 define('TABLE_RANKS', DB_PREFIX . 'ranks');
 define('TABLE_SERVERS', DB_PREFIX . 'servers');
 define('TABLE_STATS', DB_PREFIX . 'stats');
